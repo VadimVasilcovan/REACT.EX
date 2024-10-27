@@ -17,7 +17,7 @@ const Parallax = () => {
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at urna eu metus malesuada consectetur.</p>
                 
             </div>
-            
+
         </div>
     );
 };

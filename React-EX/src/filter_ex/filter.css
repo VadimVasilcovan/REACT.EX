@@ -1,0 +1,8 @@
+.main-div{
+    display: flex;
+    align-items: row;
+}
+
+.input-field{
+    margin-right: 5rem;
+}
