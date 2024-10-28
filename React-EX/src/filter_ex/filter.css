@@ -6,3 +6,9 @@
 .input-field{
     margin-right: 5rem;
 }
+
+.value-div{
+    border:solid;
+    width: 15rem;
+    height: 5rem;
+}

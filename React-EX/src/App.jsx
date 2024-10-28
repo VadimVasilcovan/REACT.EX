@@ -1,12 +1,11 @@
 import React from "react";
-import Parallax from "./Parallax-ex/Parralax";
-import List from "./Render_Lists/renderLists";
-import FilterFun from "./filter_ex/filter";
+
+import FilterComponent from "./Filter_miniproject/filterProject";
 
 const App = () => {
 
   return(
-    <FilterFun/>
+    <FilterComponent/>
 
   )
 }
