@@ -9,9 +9,6 @@ const ManufacturerFilter = () => {
     const SelectManufacturer = (event) =>{
         setManufacturer(event.target.value)
     }
-
-
-
     return(<div>
         <input
         value={manufacturer}
