@@ -12,7 +12,6 @@ const ToDoList = () => {
     return(<>
    <AddTask {...addTaskProps} />
    
-   
    {submitTask.map((task, index) => (
     <div key={index}>{task}
     <DeleteTask {...addTaskProps} index={index} />
