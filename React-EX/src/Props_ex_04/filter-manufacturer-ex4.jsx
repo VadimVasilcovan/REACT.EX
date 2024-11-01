@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
-const ManufacturerFilter = ({ manufacturer, setManufacturer, carsBrands }) => {
+const ManufacturerFilter = ({ manufacturer, setManufacturer, carsBrands, addManufacture, setAddManufacture }) => {
+
+    
+
     const writeManufacturer = (event) => {
         setManufacturer(event.target.value); 
     }
 
+    const addManufactureFun = () => {
+        setAddManufacture([...addManufacture, manufacturer])
+    }
     
 
     return (
@@ -24,6 +30,7 @@ const ManufacturerFilter = ({ manufacturer, setManufacturer, carsBrands }) => {
             value={manufacturer}
             onChange={writeManufacturer}
             />
+            <button onClick={addManufactureFun}>Add</button>
             
             
         </>

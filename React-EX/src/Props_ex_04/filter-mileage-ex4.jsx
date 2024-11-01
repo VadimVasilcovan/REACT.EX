@@ -2,6 +2,9 @@ import './filter-parent-ex4'
 
 const FilterMileage = ({minMileage, setMinMileage, maxMileage, setMaxMileage}) => {
     
+    
+
+    
     const writeMinMileageFun = (event) => {
         setMinMileage(event.target.value)
     }

@@ -3,6 +3,7 @@ import ManufacturerFilter from "./filter-manufacturer-ex4";
 import FilterHP from "./filter-HP-ex4";
 import './filter-ex-04.css'
 import FilterMileage from "./filter-mileage-ex4";
+import FilterSelection from "./filter-selection-ex-04";
 
 const FilterParent = () => {
     const [manufacturer, setManufacturer] = useState('');
@@ -10,7 +11,7 @@ const FilterParent = () => {
     const [maxHp, setMaxHp]=useState('');
     const [minMileage, setMinMileage]=useState('');
     const [maxMileage, setMaxMileage]=useState('');
-    
+    const [addManufacture, setAddManufacture]=useState([])
     
 
     const carsBrands = [
@@ -30,7 +31,7 @@ const FilterParent = () => {
 
     // Filter cars based on selected manufacturer
     const filteredCars = carsBrands.filter((car) => 
-    (!manufacturer || car.manufacturer === manufacturer) &&
+    (!addManufacture.length || addManufacture.includes(car.manufacturer)) &&
     (!minHp || car.HP >= Number(minHp)) &&
     (!maxHp || car.HP <= Number(maxHp)) &&
     (!minMileage || car.mileage >= Number(minMileage))&&
@@ -49,13 +50,20 @@ const FilterParent = () => {
                 manufacturer={manufacturer}
                 setManufacturer={setManufacturer}
                 carsBrands={carsBrands}
+                addManufacture={addManufacture} 
+                setAddManufacture={setAddManufacture}
             />
             </span>
             <span>
             <FilterHP {...filterHpData}/>
             </span>
-            <span></span>
+            <span>
             <FilterMileage {...filterMileageData}/>
+            </span>
+            <span>
+            <FilterSelection 
+            addManufacture={addManufacture}/>
+            </span>
             </div>
             <div>
                 {filteredCars.map((car) => (
