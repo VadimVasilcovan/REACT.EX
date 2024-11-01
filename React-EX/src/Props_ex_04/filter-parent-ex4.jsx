@@ -11,9 +11,12 @@ const FilterParent = () => {
     const [maxHp, setMaxHp]=useState('');
     const [minMileage, setMinMileage]=useState('');
     const [maxMileage, setMaxMileage]=useState('');
-    const [addManufacture, setAddManufacture]=useState([])
+    const [addManufacture, setAddManufacture]=useState([]);
+    const [addMinHp, setAddMinHp]=useState([]);
+    const [addMaxHp, setAddMaxHP]=useState([]);
+    const [addMinMileage, setAddMinMileage]=useState([]);
+    const [addMaxMileage, setAddMaxMileage]=useState([]);
     
-
     const carsBrands = [
         { id: 1, manufacturer: 'Mercedes', HP: 300, mileage: 15000 },
         { id: 12, manufacturer: 'Mercedes', HP: 500, mileage: 16000 },
@@ -29,18 +32,18 @@ const FilterParent = () => {
         { id: 11, manufacturer: 'Porsche', HP: 420, mileage: 10000 }
     ];
 
-    // Filter cars based on selected manufacturer
+    // Filter cars 
     const filteredCars = carsBrands.filter((car) => 
     (!addManufacture.length || addManufacture.includes(car.manufacturer)) &&
-    (!minHp || car.HP >= Number(minHp)) &&
-    (!maxHp || car.HP <= Number(maxHp)) &&
-    (!minMileage || car.mileage >= Number(minMileage))&&
-    (!maxMileage || car.mileage <= Number(maxMileage))
+    (!addMinHp.length || car.HP >= Math.min(...addMinHp)) &&
+    (!addMaxHp.length || car.HP <= Math.max(...addMaxHp)) &&
+    (!addMinMileage.length || car.mileage >= Math.min(...addMinMileage))&&
+    (!addMaxMileage.length || car.mileage <= Math.max(...addMaxMileage))
 );
  
     
-    const filterHpData = ({minHp, setMinHp, maxHp, setMaxHp });
-    const filterMileageData = ({minMileage, setMinMileage, maxMileage, setMaxMileage });
+    const filterHpData = ({minHp, setMinHp, maxHp, setMaxHp,  addMinHp, setAddMinHp, addMaxHp, setAddMaxHP });
+    const filterMileageData = ({minMileage, setMinMileage, maxMileage, setMaxMileage, addMinMileage, setAddMinMileage,addMaxMileage, setAddMaxMileage });
 
     return (
         <div > 

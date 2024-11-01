@@ -1,9 +1,7 @@
 import './filter-parent-ex4'
 
-const FilterMileage = ({minMileage, setMinMileage, maxMileage, setMaxMileage}) => {
-    
-    
-
+const FilterMileage = ({minMileage, setMinMileage, maxMileage, setMaxMileage, 
+                        addMinMileage, setAddMinMileage,addMaxMileage, setAddMaxMileage }) => {
     
     const writeMinMileageFun = (event) => {
         setMinMileage(event.target.value)
@@ -12,6 +10,20 @@ const FilterMileage = ({minMileage, setMinMileage, maxMileage, setMaxMileage}) =
     const writeMaxMileage = (event) => {
         setMaxMileage(event.target.value)
     }
+
+    const addMinMileageSelect = () =>{
+        setAddMinMileage([...addMinMileage, minMileage])
+    }
+
+    const addMaxMileageSelect = () => {
+        setAddMaxMileage([...addMaxMileage, maxMileage])
+    }
+
+    const SubmitMileageSelect = () => {
+        addMinMileageSelect ();
+        addMaxMileageSelect ();
+    }
+
 
     return(<>
     <input
@@ -26,6 +38,7 @@ const FilterMileage = ({minMileage, setMinMileage, maxMileage, setMaxMileage}) =
     type='text'
     onChange={writeMaxMileage}
     />
+    <button onClick={SubmitMileageSelect}>Add</button>
     </>)
 }
 
