@@ -6,27 +6,26 @@ const ManufacturerFilter = ({ manufacturer, setManufacturer, carsBrands }) => {
         setManufacturer(event.target.value); 
     }
 
+    
+
     return (
         <>
             <select onChange={writeManufacturer} value={manufacturer}>
                 <option value="">--Select an option--</option>
                 {carsBrands.map((carsBrand, index) => (
-                    <option key={index} value={carsBrand.HP}>
-                        {carsBrand.HP}
+                    <option key={index} value={carsBrand.manufacturer}>
+                        {carsBrand.manufacturer}
                     </option>
                 ))}
-                <option value="custom">Other</option>
+                
             </select>
+            <input
+            type='text'
+            value={manufacturer}
+            onChange={writeManufacturer}
+            />
             
             
-            {manufacturer === 'custom' && (
-                <input 
-                    type="text" 
-                    value={manufacturer} 
-                    onChange={writeManufacturer} 
-                    placeholder="Enter custom manufacturer" 
-                />
-            )}
         </>
     );
 }

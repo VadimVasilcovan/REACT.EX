@@ -1,0 +1,12 @@
+.FilterOptions{
+display: flex;
+flex-direction: column;
+}
+
+input{
+ width: 8rem;
+}
+
+select{
+    width: 8rem;
+}
