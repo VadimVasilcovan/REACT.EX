@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ManufacturerFilter from "./filter-manufacturer-ex4";
 import FilterHP from "./filter-HP-ex4";
-import './filter-ex-04.css'
 import FilterMileage from "./filter-mileage-ex4";
 import FilterSelection from "./filter-selection-ex-04";
+import './filter-ex-04.css'
 
 const FilterParent = () => {
     const [manufacturer, setManufacturer] = useState('');

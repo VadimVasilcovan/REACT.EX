@@ -8,7 +8,6 @@ const FilterHP = ({minHp, setMinHp, maxHp, setMaxHp,
         setMinHp(event.target.value)
     }
 
-  
     const writeMaxHP = (event) => {
         setMaxHp(event.target.value)
     }

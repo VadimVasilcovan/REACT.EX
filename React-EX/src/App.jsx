@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import ToDoList from "./Props_ex_03/parent-component";
 import FilterParent from "./Props_ex_04/filter-parent-ex4";
+import CarFunction from "./update-object-in-state/update-object";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -11,7 +12,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-        <FilterParent/>
+        <CarFunction/>
         </>
     );
 };
