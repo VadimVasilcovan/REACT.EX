@@ -3,7 +3,7 @@ import { useState } from "react";
 const BookcksFunction = () => {
 const [boock, setboock]=useState({writer:'', tytle:'', year:''});
 const [addBoock, setAddBoock]=useState([]);
-const [updateBoock, setUpdateBoock]=useState(true)
+const [updateBoock, setUpdateBoock]=useState(null)
 
     const writeWriter = (event) => {
         setboock(boocks =>({...boocks, writer: event.target.value}))
@@ -18,8 +18,20 @@ const [updateBoock, setUpdateBoock]=useState(true)
     }
 
     const SubmitTheValue = () => {
-        setAddBoock([...addBoock, boock])
+       if (boock !== ''){
+        if (updateBoock !== null) {
+            const updateTask = [...addBoock];
+            updateTask[updateBoock] = boock;
+            setAddBoock(updateTask);
+            setUpdateBoock(null);
+        }else{
+            setAddBoock([...addBoock, boock])
+        }
         setboock({ writer: '', tytle: '', year:'' });
+       }
+        {/* setAddBoock([...addBoock, boock])
+        setboock({ writer: '', tytle: '', year:'' });
+    */}
     }
 
     const deleteBoockFun = (deleteBoock) => {
