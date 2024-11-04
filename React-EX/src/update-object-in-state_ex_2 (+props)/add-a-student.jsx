@@ -18,6 +18,7 @@ const AddStudent = ({student, setStudent, addStudent, setAddStudent}) =>{
 
     const HandleUpdates = () => {
         setAddStudent([...addStudent, student])
+        setStudent({ name: '', surname: '', year: '' });
     }
 
     return(
@@ -36,6 +37,7 @@ const AddStudent = ({student, setStudent, addStudent, setAddStudent}) =>{
         placeholder="year"
         onChange={WriteYear}
         value={student.year}
+        type='Number'
         />
         <button onClick={HandleUpdates}>Submit</button>
        </div>
