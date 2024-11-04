@@ -4,6 +4,7 @@ import FilterParent from "./Props_ex_04/filter-parent-ex4";
 import CarFunction from "./update-object-in-state/update-object";
 import BookcksFunction from "./update-object-in-state_ex_01/update-object-in-state_ex_01";
 import ListOfStudents from "./update-object-in-state_ex_2 (+props)/List-of-students-parent";
+import MyComponent from "./updater-function/updater-function";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -13,7 +14,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-        <ListOfStudents/>
+        <MyComponent/>
         </>
     );
 };
