@@ -17,7 +17,7 @@ const CarFunction = () => {
         setCar(c=>({...c,make:event.target.value}))
     }
     return (<div>
-    <p>I have a brand new {car.make} {car.model} from {car.year}</p>
+    < p>I have a brand new {car.make} {car.model} from {car.year}</p>
     <input
     placeholder="Year"
     type="Number"
