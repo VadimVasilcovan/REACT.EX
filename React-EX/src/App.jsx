@@ -6,6 +6,7 @@ import BookcksFunction from "./update-object-in-state_ex_01/update-object-in-sta
 import ListOfStudents from "./update-object-in-state_ex_2 (+props)/List-of-students-parent";
 import MyComponent from "./updater-function/updater-function";
 import AddingEmploy from "./updater-function-ex-1/AddingEmployParent";
+import MyUseEfectFun from "./useEfect/useEfect";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -15,7 +16,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <AddingEmploy/>
+       <MyUseEfectFun/>
         </>
     );
 };
