@@ -5,6 +5,7 @@ import CarFunction from "./update-object-in-state/update-object";
 import BookcksFunction from "./update-object-in-state_ex_01/update-object-in-state_ex_01";
 import ListOfStudents from "./update-object-in-state_ex_2 (+props)/List-of-students-parent";
 import MyComponent from "./updater-function/updater-function";
+import AddingEmploy from "./updater-function-ex-1/AddingEmployParent";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -14,7 +15,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-        <MyComponent/>
+       <AddingEmploy/>
         </>
     );
 };
