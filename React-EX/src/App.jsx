@@ -9,6 +9,7 @@ import AddingEmploy from "./updater-function-ex-1/AddingEmployParent";
 import MyUseEfectFun from "./useEfect/useEfect";
 import Demo from "./useEfect-fetching-data/useEfect-fetching-data";
 import FetchDataex1 from "./useEfect-fetching-data/useEfect-fetching-data";
+import PokeApi from "./useEfect-fetching-data/pokeApi-fetch-ex";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -18,7 +19,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <FetchDataex1/>
+       <PokeApi/>
         </>
     );
 };
