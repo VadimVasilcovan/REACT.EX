@@ -20,7 +20,7 @@ const MyUseEfectFun = () => {
 
     useEffect(() => {
         document.title = `Count ${count} ${color}` 
-    }, [count, color])
+    }, [color, count])
     
     return (<div>
         <p style={{color: color}}>Count:{count}</p>

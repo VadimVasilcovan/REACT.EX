@@ -7,6 +7,8 @@ import ListOfStudents from "./update-object-in-state_ex_2 (+props)/List-of-stude
 import MyComponent from "./updater-function/updater-function";
 import AddingEmploy from "./updater-function-ex-1/AddingEmployParent";
 import MyUseEfectFun from "./useEfect/useEfect";
+import Demo from "./useEfect-fetching-data/useEfect-fetching-data";
+import FetchDataex1 from "./useEfect-fetching-data/useEfect-fetching-data";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -16,7 +18,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <MyUseEfectFun/>
+       <FetchDataex1/>
         </>
     );
 };
