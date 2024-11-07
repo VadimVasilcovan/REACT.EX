@@ -10,6 +10,7 @@ import MyUseEfectFun from "./useEfect/useEfect";
 import Demo from "./useEfect-fetching-data/useEfect-fetching-data";
 import FetchDataex1 from "./useEfect-fetching-data/useEfect-fetching-data";
 import PokeApi from "./useEfect-fetching-data/pokeApi-fetch-ex";
+import GetData from "./Mastering-Fetch-API/basic-fetch-and-promises";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -19,7 +20,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <PokeApi/>
+       <GetData/>
         </>
     );
 };
