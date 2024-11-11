@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NameFilter from "./name-filter";
-
 import FilterUserName from "./username-filter";
 
 const TheListOfPersonParent = () => {
@@ -32,7 +31,10 @@ const TheListOfPersonParent = () => {
     
   return (
     <div>
-      <NameFilter data={data} setNameFilter={setNameFilter} />
+      <NameFilter 
+      data={data} 
+      setNameFilter={setNameFilter} />
+
       <FilterUserName 
     username={username} 
     setUserName={setUserName} 
