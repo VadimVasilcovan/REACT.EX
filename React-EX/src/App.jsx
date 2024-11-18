@@ -15,6 +15,7 @@ import AsyncAwaytMethod from "./Mastering-Fetch-API/async-awayt";
 import UrlRequestHeaders from "./Mastering-Fetch-API/URL-Request-Headers";
 import TheListOfPersonParent from "./project-filter-api/parent-component";
 import CarList from "./display-data-ex/display-car";
+import ParentApiEx2 from "./project-filter-api-02.jsx/parent-project-filter-api.02";
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -24,7 +25,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-        <CarList/>
+        <ParentApiEx2/>
         </>
     );
 };

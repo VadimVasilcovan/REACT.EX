@@ -1,0 +1,10 @@
+.Pokemon-Data-div-main{
+    border: solid;
+    width: 15rem;
+  
+}
+.Pokemon-Data-div{
+display: flex;
+flex-direction: row;
+border: solid;
+}
