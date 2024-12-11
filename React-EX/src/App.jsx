@@ -18,6 +18,7 @@ import CarList from "./display-data-ex/display-car";
 import ParentApiEx2 from "./project-filter-api-02.jsx/parent-project-filter-api.02";
 import InputExercise from "./7_days_of_recapitulation/10.12.2024/ex.10.12.2024";
 import NewToDoList from "./7_days_of_recapitulation/11.12.2024/toDoList";
+import CreatingList from "./7_days_of_recapitulation/11.12.2024/ex_0.2";
 
 
 const App = () => {
@@ -28,7 +29,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <NewToDoList/> 
+       <CreatingList/>
        
            </>
     );
