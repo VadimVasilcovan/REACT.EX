@@ -16,7 +16,9 @@ import UrlRequestHeaders from "./Mastering-Fetch-API/URL-Request-Headers";
 import TheListOfPersonParent from "./project-filter-api/parent-component";
 import CarList from "./display-data-ex/display-car";
 import ParentApiEx2 from "./project-filter-api-02.jsx/parent-project-filter-api.02";
-import InputExercise from "./10.12.2024/ex.10.12.2024";
+import InputExercise from "./7_days_of_recapitulation/10.12.2024/ex.10.12.2024";
+import NewToDoList from "./7_days_of_recapitulation/11.12.2024/toDoList";
+
 
 const App = () => {
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
@@ -26,8 +28,9 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <InputExercise/>
-        </>
+       <NewToDoList/> 
+       
+           </>
     );
 };
 
