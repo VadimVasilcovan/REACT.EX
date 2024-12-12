@@ -10,7 +10,8 @@ const ToDoListUsingProps = () => {
     const addTaskProps = {task, setTask, submitTask, SetSubmitTask}
     return (<>
         <CreateAnTask {...addTaskProps}/>
-        <DisplayTask submitTask={submitTask}/>
+        <DisplayTask submitTask={submitTask} SetSubmitTask={SetSubmitTask} />
+
     </>)
 }
 
