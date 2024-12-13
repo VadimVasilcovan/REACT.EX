@@ -22,6 +22,7 @@ import CreatingList from "./7_days_of_recapitulation/11.12.2024/ex_0.2";
 import ToDoListUsingProps from "./7_days_of_recapitulation/11.12.2024/ex_0.3_props/ex_0.3_parent_coponent";
 import FilterMethodEX01 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.01";
 import FilterMethodEX02 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.0.2";
+import TaskManager from "./7_days_of_recapitulation/13.12.2024/task_manager";
 
 
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <FilterMethodEX02/>
+       <TaskManager/>
        
            </>
     );
