@@ -23,9 +23,31 @@ import ToDoListUsingProps from "./7_days_of_recapitulation/11.12.2024/ex_0.3_pro
 import FilterMethodEX01 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.01";
 import FilterMethodEX02 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.0.2";
 import TaskManager from "./7_days_of_recapitulation/13.12.2024/task_manager";
+import { createStore } from 'redux'; 
+import { Provider } from 'react-redux'; 
+import Redux from "./redux";
 
 
 const App = () => {
+
+    const defaultState = {
+        cash: 0,
+    }
+
+   {/* action = {type: '', payload: '?'}*/}
+
+    const reducer = (state=defaultState, action) => {
+        switch(action.type) {
+            case'ADD_CASH':
+            return{...state, cash: state.cash + action.payload}
+            case 'GET_CASH': 
+            return{...state, cash: state.cash - action.payload}
+            default:
+                return state
+        }
+
+    }
+    const store = createStore(reducer)
     {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
 
     return (
@@ -33,7 +55,9 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <TaskManager/>
+       <Provider store={store}>
+       <Redux/>
+       </Provider>
        
            </>
     );
