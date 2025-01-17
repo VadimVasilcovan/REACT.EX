@@ -7,20 +7,20 @@ export default function Redux(){
     const cash = useSelector(state => state.cash)
     console.log(cash)
 
-    const addCash = () => {
-            dispatch({type: 'ADD_CASH', payload: 5})
+    const addCash = (cash) => {
+            dispatch({type: 'ADD_CASH', payload: cash})
     }
 
-    const getCash = () => {
-        dispatch({tyoe: 'GET_CASH', payload: 5})
+    const getCash = (cash) => {
+        dispatch({type: 'GET_CASH', payload: cash})
     }
 
     
     return(<div>
         <div>
             <div>{cash}</div>
-            <button onClick={() =>addCash()}>+</button>
-            <button onClick={() => getCash()}>-</button>
+            <button onClick={() =>addCash(Number(prompt()))}>+</button>
+            <button onClick={() => getCash(Number(prompt()))}>-</button>
         </div>
     </div>)
 }
