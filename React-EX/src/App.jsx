@@ -26,6 +26,7 @@ import TaskManager from "./7_days_of_recapitulation/13.12.2024/task_manager";
 import { createStore } from 'redux'; 
 import { Provider } from 'react-redux'; 
 import Redux from "./redux";
+import AppLazyLoading from "./lazy-loading-ex/App-lazy-Loading-ex";
 
 
 const App = () => {
@@ -55,10 +56,15 @@ const App = () => {
             {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-       <Provider store={store}>
+      
+
+
+        {/* <Provider store={store}>
        <Redux/>
-       </Provider>
+       </Provider>*/}
        
+
+       <AppLazyLoading/>
            </>
     );
 };
