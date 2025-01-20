@@ -27,6 +27,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux'; 
 import Redux from "./redux";
 import AppLazyLoading from "./lazy-loading-ex/App-lazy-Loading-ex";
+import UseRefEx1 from "./react-hooks/useRef";
 
 
 const App = () => {
@@ -64,7 +65,7 @@ const App = () => {
        </Provider>*/}
        
 
-       <AppLazyLoading/>
+       <UseRefEx1/>
            </>
     );
 };
