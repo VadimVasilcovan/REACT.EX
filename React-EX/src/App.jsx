@@ -28,6 +28,7 @@ import { Provider } from 'react-redux';
 import Redux from "./redux";
 import AppLazyLoading from "./lazy-loading-ex/App-lazy-Loading-ex";
 import UseRefEx1 from "./react-hooks/useRef";
+import UseMemoEx1 from "./useMemo/useMemo.ex.1";
 
 
 const App = () => {
@@ -65,7 +66,7 @@ const App = () => {
        </Provider>*/}
        
 
-       <UseRefEx1/>
+       <UseMemoEx1/>
            </>
     );
 };
