@@ -1,0 +1,14 @@
+.main-div-ex{
+    display: flex;
+    align-items: top;
+    gap: 10px;
+    flex-direction: row;
+
+
+}
+
+
+.pages-div{
+background-color:beige;
+    width: 150px;
+}

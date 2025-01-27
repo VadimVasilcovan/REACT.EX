@@ -31,6 +31,7 @@ import UseRefEx1 from "./react-hooks/useRef";
 import UseMemoEx1 from "./useMemo/useMemo.ex.1";
 import FindIndexMethod from "./array-methods/method-findIndex/index-1";
 import FindIndecMethod02 from "./array-methods/method-findIndex/index-2";
+import MethodExercise from "./array-methods/method-findIndex/index-3";
 
 
 const App = () => {
@@ -68,7 +69,7 @@ const App = () => {
        </Provider>*/}
        
 
-       <FindIndecMethod02/>
+       <MethodExercise/>
            </>
     );
 };
