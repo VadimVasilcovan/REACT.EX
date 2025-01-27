@@ -7,7 +7,7 @@ export default function UseMemoEx1() {
 
   async function FetchData() {
     try {
-      const getData = await fetch("https://dummyjson.com/products?limit=100");
+      const getData = await fetch("https://dummyjson.com/products?limit=1000");
       const result = await getData.json();
       setData(result.products);
     } catch (e) {
