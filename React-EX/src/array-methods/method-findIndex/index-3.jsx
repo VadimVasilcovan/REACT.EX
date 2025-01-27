@@ -7,15 +7,18 @@ export default function MethodExercise() {
   const ArrayofData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const AddToFavoriteFun = (data) => {
-    const findValue = addToFavorite.findIndex((i) => i === data);
-
+    let copyFavoriteList = [...addToFavorite]; 
+    
+    const findValue = copyFavoriteList.findIndex((i) => i === data);
+  
     if (findValue === -1) {
-      
-      setAddToFavorite([...addToFavorite, data]);
+      copyFavoriteList.push(data); 
+      setAddToFavorite(copyFavoriteList); 
     } else {
       console.log("Item already in favorites");
     }
   };
+  
 
   return (
     <div className="main-div-ex">
