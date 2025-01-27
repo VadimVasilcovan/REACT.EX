@@ -32,6 +32,7 @@ import UseMemoEx1 from "./useMemo/useMemo.ex.1";
 import FindIndexMethod from "./array-methods/method-findIndex/index-1";
 import FindIndecMethod02 from "./array-methods/method-findIndex/index-2";
 import MethodExercise from "./array-methods/method-findIndex/index-3";
+import AdANumber from "./array-methods/method-findIndex/index-4";
 
 
 const App = () => {
@@ -69,7 +70,7 @@ const App = () => {
        </Provider>*/}
        
 
-       <MethodExercise/>
+       <AdANumber/>
            </>
     );
 };
