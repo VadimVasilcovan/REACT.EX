@@ -6,13 +6,13 @@ export default function AdANumber() {
 
   // Update input value when typing
   const WriteAnNumber = (e) => {
-    setWriteValue(e.target.value); // Set the input value
+    setWriteValue(e.target.value); 
   };
 
   // Add number to the list when button is clicked
   const HandleTheValue = () => {
-    PushDataInArray(writeValue); // Push input value to the array
-    setWriteValue(""); // Clear the input field
+    PushDataInArray(writeValue); 
+    setWriteValue(""); 
   };
 
   // Add number to the array if it doesn't already exist
@@ -34,7 +34,7 @@ export default function AdANumber() {
           value={writeValue}
           placeholder="Write a number"
         />
-        <button onClick={HandleTheValue}>Add A Number</button>
+        <button onClick={HandleTheValue()}>Add A Number</button>
       </span>
       <span>
         {newValue.map((number, index) => (

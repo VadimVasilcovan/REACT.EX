@@ -33,6 +33,8 @@ import FindIndexMethod from "./array-methods/method-findIndex/index-1";
 import FindIndecMethod02 from "./array-methods/method-findIndex/index-2";
 import MethodExercise from "./array-methods/method-findIndex/index-3";
 import AdANumber from "./array-methods/method-findIndex/index-4";
+import FindIndex05 from "./array-methods/method-findIndex/index-05";
+import FindIndexEx06 from "./array-methods/method-findIndex/index-06";
 
 
 const App = () => {
@@ -70,7 +72,7 @@ const App = () => {
        </Provider>*/}
        
 
-       <AdANumber/>
+    <FindIndexEx06/>
            </>
     );
 };
