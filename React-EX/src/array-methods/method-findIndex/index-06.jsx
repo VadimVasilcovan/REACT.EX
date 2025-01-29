@@ -22,6 +22,7 @@ export default function FindIndexEx06() {
     const checkTheIndex = addToFavorite.findIndex((i) => i.id === value.id);
     if (checkTheIndex === -1) {
       setAddToFavorite([...addToFavorite, value]);
+      debugger
     }
   };
 
@@ -31,8 +32,9 @@ export default function FindIndexEx06() {
         <p>List of person</p>
         {fetchApi.map(person => (
           <ul key={person.id}>
-            <li>{person.name}</li>
-            <button onClick={() => addToFavoriteFun(person)}>Add</button>
+            <li>{person.name}
+            <button onClick={() => addToFavoriteFun(person)}>Add</button></li>
+           
           </ul>
         ))}
       </div>

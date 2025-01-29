@@ -1,14 +1,34 @@
-.main-div-ex{
-    display: flex;
-    align-items: top;
-    gap: 10px;
-    flex-direction: row;
-
-
+.main-div-ex {
+  display: flex;
+  align-items: top;
+  gap: 10px;
+  flex-direction: row;
 }
 
+.pages-div {
+  background-color: aliceblue;
+  border-radius: 5px;
+  width: 30rem;
+  min-width: 15rem;
+  border: solid;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
-.pages-div{
-background-color:beige;
-    width: 150px;
+.span-element {
+  background-color: rgb(255, 255, 255);
+  border: solid;
+  width: 85%;
+  border-radius: 5px;
+}
+
+.button-add {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  margin-bottom: 0.5rem;
+  border: none;
 }
