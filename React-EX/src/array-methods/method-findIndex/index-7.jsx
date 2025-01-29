@@ -24,7 +24,15 @@ export default function FindIndex07() {
       setAddToWishList([...addToWishList, value]);
     }
   };
-
+  
+  const deleteTask = (idToDelete) => {
+    setAddToWishList((prevWishList) =>
+      prevWishList.filter((person) => person.id !== idToDelete)
+    );
+  };
+  
+  
+  
   return (
     <div className="main-div-ex">
       <div className="pages-div">
@@ -56,6 +64,10 @@ export default function FindIndex07() {
             <li>
               <h2> username: {person.username}</h2>
             </li>
+            <button className="button-add" onClick={() => deleteTask(person.id)}>
+
+              Delete
+            </button>
           </ul>
         ))}
       </div>
