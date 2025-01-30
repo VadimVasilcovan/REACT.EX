@@ -37,6 +37,7 @@ import FindIndex05 from "./array-methods/method-findIndex/index-05";
 import FindIndexEx06 from "./array-methods/method-findIndex/index-06";
 import FindIndex07 from "./array-methods/method-findIndex/index-7";
 import FilterMethod4 from "./array-methods/method-filter/index-4";
+import FilterMethod05 from "./array-methods/method-filter/index-5";
 
 
 const App = () => {
@@ -74,7 +75,7 @@ const App = () => {
        </Provider>*/}
        
 
-    <FilterMethod4/>
+    <FilterMethod05/>
            </>
     );
 };
