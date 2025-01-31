@@ -38,6 +38,10 @@ import FindIndexEx06 from "./array-methods/method-findIndex/index-06";
 import FindIndex07 from "./array-methods/method-findIndex/index-7";
 import FilterMethod4 from "./array-methods/method-filter/index-4";
 import FilterMethod05 from "./array-methods/method-filter/index-5";
+import DebuggingEx from "./learn-debugging/index-01";
+import Counter from "./learn-debugging/index-01";
+import TodoApp from "./learn-debugging/index-01";
+import NewExercises from "./Exercises";
 
 
 const App = () => {
@@ -75,7 +79,7 @@ const App = () => {
        </Provider>*/}
        
 
-    <FilterMethod05/>
+   <NewExercises/>
            </>
     );
 };

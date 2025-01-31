@@ -10,7 +10,7 @@ export default function FilterMethod03 () {
 
 
       //Delete an item from the cart by id
-
+      
 
       const removeItem = (idToRemove) => {
         setCart(prevCart =>prevCart.filter(i => i.id !== idToRemove))
