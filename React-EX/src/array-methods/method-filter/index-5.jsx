@@ -28,20 +28,27 @@ export default function FilterMethod05() {
 
   }
 
+  const DeleteItem = (deleteID) => {
+    setFavorite(D => D.filter(i => i !== deleteID))
+  }
+
   return (
     <div className="main-div-ex">
       <div className="pages-div">
         {apiData.map((person) => (
-         <span  key={person.id}>
-         <p>{person.name}</p>
+         <ul  key={person.id}>
+         <li>{person.name}</li>
          <button onClick={() => AdToFavorites(person)}>Add</button>
-       </span>
+       </ul>
        
         ))}
       </div>
       <div className="pages-div">
       {favorite.map((person) => (
-          <p key={person.id}>{person.name}</p>
+          
+          <ul  key={person.id}> <li>{person.name}</li>
+          <button onClick={() => DeleteItem(person)}>Delete</button>
+          </ul>
         ))}
       </div>
   

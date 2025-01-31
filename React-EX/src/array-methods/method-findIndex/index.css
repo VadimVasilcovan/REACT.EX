@@ -12,8 +12,9 @@
   min-width: 15rem;
   border: solid;
   display: flex;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
+
 }
 
 .span-element {
