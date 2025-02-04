@@ -179,3 +179,32 @@ const summary = `${title} , has ${page}pages long book, was written by ${author}
 const PagesRange = page > 100 ? 'over a thousand' : 'less then 1000'; 
 
 console.log(`the book has ${PagesRange} pages`)
+
+
+//Short-Circuting And Logical Operator&&
+console.log(true && "some string"); //output some string
+console.log(false && "some string") // output false
+console.log (hasMovieAdaptation && "This Book has a movie") //output This Book has a movie
+
+//falsy : 0, '',null, undefined
+
+console.log("jonas" && "Some string"); //output Some string
+console.log(0 && "some string"); // output 0
+
+console.log(true || "Some String") // output true
+console.log(false || "Some String") // Some string
+
+
+console.log(book.translations.spanish)
+
+const spanishTranslation = book.translations.spanish || "has no spanish translation" 
+
+
+console.log(book.reviews.librarything.reviewsCount); // 0
+const countWrong = book.reviews.librarything.reviewsCount ||  "no data"
+countWrong; // no data
+
+
+//?? exclude the 0 as a falsy data
+const count = book.reviews.librarything.reviewsCount ?? "no data"
+count; // 0
