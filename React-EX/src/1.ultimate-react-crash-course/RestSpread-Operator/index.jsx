@@ -167,5 +167,15 @@ const updatedBook = {
   //adding a new property
   moviePublicationData: "2001-12-19",
   //overwriting the existing
-  pages: 393,
+  page: 393,
 };
+
+//Template Literals
+const summary = `${title} , has ${page}pages long book, was written by ${author} and published in ${publicationDate.split("-")[0]}`
+
+
+//Ternaries operator 
+
+const PagesRange = page > 100 ? 'over a thousand' : 'less then 1000'; 
+
+console.log(`the book has ${PagesRange} pages`)
