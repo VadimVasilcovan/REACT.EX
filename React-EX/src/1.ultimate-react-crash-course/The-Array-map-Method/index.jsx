@@ -135,7 +135,7 @@ const data = [
   },
 ];
 
-const books = getBooks();
+const books = data;
 
 const x = [1, 2, 3].map((el) => el * 2);
 console.log(x); // output[2, 4, 6]
@@ -146,3 +146,21 @@ const essentialData = books.map((book) => ({
   title: book.title,
   author: book.author,
 }));
+
+// Filter Method
+const longBooks = books.filter((book) => book.pages > 500);
+console.log();
+
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((book) => book.title);
+
+//Reduce Method
+const pageAllBooks = books.reduce();
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book, pages, 0);
+console.log(pageAllBooks);
