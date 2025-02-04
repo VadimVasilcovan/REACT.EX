@@ -17,9 +17,9 @@ const TodoApp = () => {
   };
 
   const toggleTask = (index) => {
-    const newTasks = [...tasks];
+    const newTasks = [...task];
     newTasks[index].completed = !newTasks[index].completed;
-    setTasks(newTasks);
+    setTasks(newTasks)
   };
 
   const filteredTasks = tasks.filter((t) => {
