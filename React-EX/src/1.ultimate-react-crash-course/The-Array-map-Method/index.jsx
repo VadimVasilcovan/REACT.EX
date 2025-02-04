@@ -135,92 +135,14 @@ const data = [
   },
 ];
 
-function getBooks() {
-  return data;
-}
+const books = getBooks();
 
-function getBook(id) {
-  return data.find((d) => d.id === id);
-}
-const book = getBook(1);
-const { title, author, page, publicationDate, genres } = book;
-console.log(author, title, genres);
+const x = [1, 2, 3].map((el) => el * 2);
+console.log(x); // output[2, 4, 6]
 
+const titles = books.map((book) => book.title);
 
-
-
-
-//Rest operator is write only in the end of an array and this bring the rest ellements of array
-const [primaryGenre, secondaryGenre, ...otherGenres] = genres; // output primaryGenre, secondaryGenre, +the rest ellements of genres array
-
-console.log(primaryGenre, otherGenres);
-
-const newGenres = [...genres, "epic fantasy"];
-
-
-console.log(newGenres);
-
-//the sama as in array adding in the end of the object an ney value like 'moviePublicationData'
-//and we kan change the value for existing  proprietis like 'page with neu value 393',
-const updatedBook = {
-  ...book,
-  //adding a new property
-  moviePublicationData: "2001-12-19",
-  //overwriting the existing
-  page: 393,
-};
-
-//Template Literals
-const summary = `${title} , has ${page}pages long book, was written by ${author} and published in ${publicationDate.split("-")[0]}`
-
-
-//Ternaries operator 
-
-const PagesRange = page > 100 ? 'over a thousand' : 'less then 1000'; 
-
-console.log(`the book has ${PagesRange} pages`)
-
-
-//Short-Circuting And Logical Operator&&
-console.log(true && "some string"); //output some string
-console.log(false && "some string") // output false
-console.log (hasMovieAdaptation && "This Book has a movie") //output This Book has a movie
-
-//falsy : 0, '',null, undefined
-
-console.log("jonas" && "Some string"); //output Some string
-console.log(0 && "some string"); // output 0
-
-console.log(true || "Some String") // output true
-console.log(false || "Some String") // Some string
-
-
-console.log(book.translations.spanish)
-
-const spanishTranslation = book.translations.spanish || "has no spanish translation" 
-
-
-console.log(book.reviews.librarything.reviewsCount); // 0
-const countWrong = book.reviews.librarything.reviewsCount ||  "no data"
-countWrong; // no data
-
-
-//?? exclude the 0 as a falsy data
-const count = book.reviews.librarything.reviewsCount ?? "no data"
-count; // 0
-
-
-
-//Optional Chaining
-
-function getTotalReviewCount(book){
-const goodread = book.reviews.goodreads?.reviewsCount
-const librarything = book.reviews.librarything?.reviewsCount ?? 0
-return goodread + librarything
-}
-
-console.log(getTotalReviewCount(book)) //output  sum of reviews  
-
-
-
-
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+}));
