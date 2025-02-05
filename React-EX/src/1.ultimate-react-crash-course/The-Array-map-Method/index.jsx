@@ -164,3 +164,24 @@ const pageAllBooks = books.reduce();
 
 const pagesAllBooks = books.reduce((sum, book) => sum + book, pages, 0);
 console.log(pageAllBooks);
+
+const arr = [3, 4, 5, 6, 7];
+const sorted = arr.sort((a, b) => a - b);
+//sort modify the original array to avoid this in order to create a copy of array we using slice
+const sorting = arr.slice().sort((a, b) => a - b);
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+
+//Ad an ellement to arya
+
+const newBook = {
+  id: 6,
+  title: "hary potter",
+  author: "J.R.",
+};
+
+const addNewBook = [...book, newBook];
+
+// delete an element form array
+
+const boockAfterDelete = addNewBook.filter((book) => book.id !== 3);
