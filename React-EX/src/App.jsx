@@ -42,6 +42,7 @@ import DebuggingEx from "./learn-debugging/index-01";
 import Counter from "./learn-debugging/index-01";
 import TodoApp from "./learn-debugging/index-01";
 import NewExercises from "./Exercises";
+import ReactEx from "./1.ultimate-react-crash-course/Working-with-components-props-and-jsx/Rendering-root-component";
 
 
 const App = () => {
@@ -79,7 +80,7 @@ const App = () => {
        </Provider>*/}
        
 
-   <NewExercises/>
+   <ReactEx/>
            </>
     );
 };

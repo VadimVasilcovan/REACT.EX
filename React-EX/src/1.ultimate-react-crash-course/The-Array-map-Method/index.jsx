@@ -185,3 +185,8 @@ const addNewBook = [...book, newBook];
 // delete an element form array
 
 const boockAfterDelete = addNewBook.filter((book) => book.id !== 3);
+
+// update an element in the array
+const booksAfterUpdate = booksAfterUpdate.map((book) =>
+  book.id === 1 ? {...book, pages: 1} : book
+);
