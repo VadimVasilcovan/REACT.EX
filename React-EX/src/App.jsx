@@ -1,4 +1,3 @@
-
 import ToDoList from "./Props_ex_03/parent-component";
 import FilterParent from "./Props_ex_04/filter-parent-ex4";
 import CarFunction from "./update-object-in-state/update-object";
@@ -23,8 +22,8 @@ import ToDoListUsingProps from "./7_days_of_recapitulation/11.12.2024/ex_0.3_pro
 import FilterMethodEX01 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.01";
 import FilterMethodEX02 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.0.2";
 import TaskManager from "./7_days_of_recapitulation/13.12.2024/task_manager";
-import { createStore } from 'redux'; 
-import { Provider } from 'react-redux'; 
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 import Redux from "./redux";
 import AppLazyLoading from "./lazy-loading-ex/App-lazy-Loading-ex";
 import UseRefEx1 from "./react-hooks/useRef";
@@ -43,17 +42,19 @@ import Counter from "./learn-debugging/index-01";
 import TodoApp from "./learn-debugging/index-01";
 import NewExercises from "./Exercises";
 import ReactEx from "./1.ultimate-react-crash-course/Working-with-components-props-and-jsx/Rendering-root-component";
-
+import StateEventEx from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components";
 
 const App = () => {
+  const defaultState = {
+    cash: 0,
+  };
 
-    const defaultState = {
-        cash: 0,
-    }
+  {
+    /* action = {type: '', payload: '?'}*/
+  }
 
-   {/* action = {type: '', payload: '?'}*/}
-
-    const reducer = (state=defaultState, action) => {
+  {
+    /*const reducer = (state=defaultState, action) => {
         switch(action.type) {
             case'ADD_CASH':
             return{...state, cash: state.cash + action.payload}
@@ -64,25 +65,25 @@ const App = () => {
         }
 
     }
-    const store = createStore(reducer)
-    {/*const [submitPerson, setSubmitPerson] = useState([]);*/}
+    const store = createStore(reducer)*/
+  }
+  {
+    /*const [submitPerson, setSubmitPerson] = useState([]);*/
+  }
 
-    return (
-        <>
-            {/*<University setSubmitPerson={setSubmitPerson} />
+  return (
+    <>
+      {/*<University setSubmitPerson={setSubmitPerson} />
             <ShowResult submitPerson={submitPerson} />
     */}
-      
 
-
-        {/* <Provider store={store}>
+      {/* <Provider store={store}>
        <Redux/>
        </Provider>*/}
-       
 
-   <ReactEx/>
-           </>
-    );
+      <StateEventEx/>
+    </>
+  );
 };
 
 export default App;
