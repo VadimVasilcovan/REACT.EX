@@ -8,11 +8,16 @@ const initialItems = [
 ];
 
 export default function TravelingList() {
+  const [items, setItem] = useState([])
+
+  function handleAddItems (item){
+    setItem(items => [...items, item])
+  }
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddItems={handleAddItems}/>
+      <PackingList items={items}/>
       <Stats />
     </div>
   );
@@ -23,20 +28,24 @@ const Logo = () => {
 };
 
 //Building a form and handling submision.
-const Form = () => {
+const Form = ({onAddItems}) => {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+  
+
+ 
   const handeleSubmit = (e) => {
     e.preventDefault();
-    
-    
 
     if (!description) return;
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
 
-    setDescription('')
-    setQuantity(1)
+
+    onAddItems(newItem);
+
+    setDescription("");
+    setQuantity(1);
   };
   return (
     <form className="add-form" onSubmit={handeleSubmit}>
@@ -62,11 +71,11 @@ const Form = () => {
   );
 };
 
-const PackingList = () => {
+const PackingList = ({items}) => {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
