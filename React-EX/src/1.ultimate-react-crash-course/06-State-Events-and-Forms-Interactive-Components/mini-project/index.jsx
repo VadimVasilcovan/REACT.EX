@@ -8,20 +8,37 @@ const initialItems = [
 ];
 
 export default function TravelingList() {
-  const [items, setItem] = useState([])
+  const [items, setItem] = useState([]);
 
-  function handleAddItems (item){
-    setItem(items => [...items, item])
+  function handleAddItems(item) {
+    setItem((items) => [...items, item]);
   }
 
-  function handleDeleteItem (itemTodelete){
-     setItem(items=> items.filter(index => index.id !== itemTodelete))
+  function handleDeleteItem(id) {
+    setItem((items) => items.filter((index) => index.id !== id));
+  }
+
+  function handleToggleItem(id) {
+    setItem(
+      ((items) => items.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              packed: !item.packed,
+            }
+          : item
+      ))
+    );
   }
   return (
     <div className="app">
       <Logo />
-      <Form onAddItems={handleAddItems}/>
-      <PackingList items={items} onDelete={handleDeleteItem}/>
+      <Form onAddItems={handleAddItems} />
+      <PackingList
+        items={items}
+        onDelete={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
       <Stats />
     </div>
   );
@@ -32,19 +49,16 @@ const Logo = () => {
 };
 
 //Building a form and handling submision.
-const Form = ({onAddItems}) => {
+const Form = ({ onAddItems }) => {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
-  
 
- 
   const handeleSubmit = (e) => {
     e.preventDefault();
 
     if (!description) return;
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
-
 
     onAddItems(newItem);
 
@@ -60,7 +74,7 @@ const Form = ({onAddItems}) => {
       >
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
           <option value={num} key={num}>
-          {num}
+            {num}
           </option>
         ))}
       </select>
@@ -75,21 +89,33 @@ const Form = ({onAddItems}) => {
   );
 };
 
-const PackingList = ({items, onDelete }) => {
+const PackingList = ({ items, onDelete, onToggleItem }) => {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} onDelete={onDelete} />
+          <Item
+            item={item}
+            key={item.id}
+            onDelete={onDelete}
+            onToggleItem={onToggleItem}
+          />
         ))}
       </ul>
     </div>
   );
 };
 
-const Item = ({ item, onDelete }) => {
+const Item = ({ item, onDelete, onToggleItem }) => {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => {
+          onToggleItem(item.id);
+        }}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
