@@ -13,11 +13,15 @@ export default function TravelingList() {
   function handleAddItems (item){
     setItem(items => [...items, item])
   }
+
+  function handleDeleteItem (itemTodelete){
+     setItem(items=> items.filter(index => index.id !== itemTodelete))
+  }
   return (
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems}/>
-      <PackingList items={items}/>
+      <PackingList items={items} onDelete={handleDeleteItem}/>
       <Stats />
     </div>
   );
@@ -56,7 +60,7 @@ const Form = ({onAddItems}) => {
       >
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
           <option value={num} key={num}>
-            {num}
+          {num}
           </option>
         ))}
       </select>
@@ -71,25 +75,25 @@ const Form = ({onAddItems}) => {
   );
 };
 
-const PackingList = ({items}) => {
+const PackingList = ({items, onDelete }) => {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} />
+          <Item item={item} key={item.id} onDelete={onDelete} />
         ))}
       </ul>
     </div>
   );
 };
 
-const Item = ({ item }) => {
+const Item = ({ item, onDelete }) => {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDelete(item.id)}>❌</button>
     </li>
   );
 };
