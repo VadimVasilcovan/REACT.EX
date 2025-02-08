@@ -36,7 +36,7 @@ export default function TravelingList() {
       <Form onAddItems={handleAddItems} />
       <PackingList
         items={items}
-        onDelete={handleDeleteItem}
+        onDelete={handleDeleteItem} 
         onToggleItem={handleToggleItem}
       />
       <Stats items={items} />
@@ -55,6 +55,8 @@ const Form = ({ onAddItems }) => {
 
   const handeleSubmit = (e) => {
     e.preventDefault();
+
+    
 
     if (!description) return;
     const newItem = { description, quantity, packed: false, id: Date.now() };
@@ -92,6 +94,7 @@ const Form = ({ onAddItems }) => {
 const PackingList = ({ items, onDelete, onToggleItem }) => {
   const [sortBy, setSortBy] = useState("input");
 
+  // Derived State
   let sortedItems;
 
   if (sortBy === "input") sortedItems = items;
@@ -132,7 +135,7 @@ const Item = ({ item, onDelete, onToggleItem }) => {
         }}
       />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
-        {item.quantity} {item.description}
+        {item.quantity} {item.description.length <=20 ? item.description : item.description.slice(0,20)}
       </span>
       <button onClick={() => onDelete(item.id)}>❌</button>
     </li>
