@@ -44,6 +44,7 @@ import NewExercises from "./Exercises";
 import ReactEx from "./1.ultimate-react-crash-course/Working-with-components-props-and-jsx/Rendering-root-component";
 import StateEventEx from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components";
 import TravelingList from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/mini-project";
+import AcordionApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Acordion-component/Acordion";
 
 const App = () => {
   const defaultState = {
@@ -82,7 +83,7 @@ const App = () => {
        <Redux/>
        </Provider>*/}
 
-      <TravelingList/>
+      <AcordionApp/>
     </>
   );
 };

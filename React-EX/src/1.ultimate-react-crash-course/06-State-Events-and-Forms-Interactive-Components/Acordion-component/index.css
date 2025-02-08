@@ -1,0 +1,53 @@
+/* index.css */
+.acordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .item {
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .open {
+    background-color: #e8f7e6;
+  }
+  
+  .number {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .title {
+    font-size: 18px;
+    margin-top: 5px;
+    color: #333;
+  }
+  
+  .icon {
+    font-size: 20px;
+    color: #333;
+    margin-left: 10px;
+  }
+  
+  .context-box {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: #666;
+    font-size: 14px;
+  }
+  
