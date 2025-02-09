@@ -1,17 +1,18 @@
 import { useState } from "react";
 
-export function AcordionItem({ num, title, text }) {
-    const [isOpen, setIsOpen] = useState(false);
+export function AcordionItem({ num, title, curOpen, onOPen, children }) {
+  const isOpen = num === curOpen;
+  //const Open = () => setIsOpen((isOpen) => !isOpen);
 
-    const Open = () => setIsOpen((isOpen) => !isOpen);
-
-    return (
-        <div className={`item ${isOpen ? "open" : ""}`} onClick={Open}>
-
-            <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
-            <p className="title">{title}</p>
-            <p className="icon">{isOpen ? '-' : '+'}</p>
-            {isOpen && <div className="context-box">{text}</div>}
-        </div>
-    );
+  function handleToggle() {
+    onOPen(isOpen ? null : num);
+  }
+  return (
+    <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
+      <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
+      <p className="title">{title}</p>
+      <p className="icon">{isOpen ? "-" : "+"}</p>
+      {isOpen && <div className="context-box">{children}</div>}
+    </div>
+  );
 }

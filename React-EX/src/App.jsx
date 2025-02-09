@@ -46,6 +46,7 @@ import StateEventEx from "./1.ultimate-react-crash-course/06-State-Events-and-Fo
 import TravelingList from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/mini-project";
 import AcordionApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Acordion-component/Acordion";
 import StateEventExCopy from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/index-copy-children-prop";
+import TipCalculator from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Tip-calculator";
 
 const App = () => {
   const defaultState = {
@@ -84,7 +85,7 @@ const App = () => {
        <Redux/>
        </Provider>*/}
 
-      <StateEventExCopy/>
+      <TipCalculator/>
     </>
   );
 };

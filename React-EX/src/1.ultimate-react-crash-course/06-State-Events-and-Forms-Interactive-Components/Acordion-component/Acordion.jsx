@@ -1,5 +1,6 @@
 import "./index.css";
 import { AcordionItem } from "./AcordionItem";
+import { useState } from "react";
 
 const faqs = [
   {
@@ -14,6 +15,10 @@ const faqs = [
     title: "fsasaf fad  sda das fad?",
     text: " Odit numquam ipsa neque, eos consequatur dolores culpa",
   },
+  {
+    title: "fsasaf fada  fsa dssfd  fad?",
+    text: " Odit dg g sgdf fgfds, eos consequatur dolores culpa",
+  },
 ];
 
 export default function AcordionApp() {
@@ -25,13 +30,33 @@ export default function AcordionApp() {
 }
 
 function Acordion({ data }) {
+  const [curOpen, setCurIsOpen] = useState(null);
   return (
     <div className="acordion">
       {data.map((el, index) => (
-        <AcordionItem key={index} title={el.title} text={el.text} num={index} />
+        <AcordionItem
+          key={index}
+          curOpen={curOpen}
+          onOPen={setCurIsOpen}
+          title={el.title}
+          num={index}
+        >
+          {el.text}
+        </AcordionItem>
       ))}
+
+<AcordionItem
+         
+          curOpen={curOpen}
+          onOPen={setCurIsOpen}
+          title={'test 1'}
+          num={22}
+        >
+         DASASD SDAD AS FA F DSF SDFSDF ASF ASD F 
+          DSAF ASD DSAF ADF ADS
+
+          FDFADSFASDF
+        </AcordionItem>
     </div>
   );
 }
-
-
