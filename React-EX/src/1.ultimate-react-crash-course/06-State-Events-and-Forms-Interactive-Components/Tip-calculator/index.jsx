@@ -1,40 +1,46 @@
-import {  useState } from "react";
+import { useState } from "react";
 
 export default function TipCalculator() {
-  const [tip, setTip] = useState(0);
+  const [tip, setTip] = useState("");
   const [yourPercent, setYourPercent] = useState(0);
-  const [friendP, setFriendP] = useState (0)
-  const [summ, setSumm]= useState (0)
+  const [friendP, setFriendP] = useState(0);
 
   return (
     <div>
-      <Input value={setTip} tip={tip}>How much was the bill?</Input>
-      <OptionInput setpercentVal={setYourPercent} percentVal={yourPercent}>How did you like the service?</OptionInput>
-      <OptionInput setpercentVal={setFriendP} percentVal={friendP}>How did your friend like the service?</OptionInput> 
-      <ResultText summ={summ} setSumm={setSumm}/>
-
+      <Input value={setTip} tip={tip}>
+        How much was the bill?
+      </Input>
+      <OptionInput setpercentVal={setYourPercent} percentVal={yourPercent}>
+        How did you like the service?
+      </OptionInput>
+      <OptionInput setpercentVal={setFriendP} percentVal={friendP}>
+        How did your friend like the service?
+      </OptionInput>
+      <ResultText tip={tip} yourpercent={yourPercent} frendsPercent={friendP} />
+      <ResetButton
+        value={setTip}
+        setpercentValFriend={setFriendP}
+        setpercentVal={setYourPercent}
+      />
     </div>
   );
 }
 
-function Input({ value,tip, children }) {
-  
+function Input({ value, tip, children }) {
   const setTipValue = (e) => {
-    value(e.target.value);
+    value(Number(e.target.value));
   };
   return (
     <div>
       {children}
-      <input  onChange={setTipValue} 
-      value={tip}/>
+      <input onChange={setTipValue} value={tip} />
     </div>
   );
-};
+}
 
-function OptionInput({ setpercentVal, children, percentVal }) {
-  
+function OptionInput({ setpercentVal, children, percentVal, onchange }) {
   const setPercentValue = (e) => {
-    setpercentVal(e.target.value);
+    setpercentVal(Number(e.target.value));
   };
   return (
     <div>
@@ -49,10 +55,23 @@ function OptionInput({ setpercentVal, children, percentVal }) {
   );
 }
 
-function ResultText ({summ, setSumm}){
+function ResultText({ tip, yourpercent, frendsPercent }) {
+  const calcValue =
+    tip + (tip / 100) * yourpercent + (tip / 100) * frendsPercent;
 
+  return (
+    <div>
+      {tip && `You paid ${tip} ($${yourpercent} + $${frendsPercent})`}
+      {calcValue > 0 ? `you paid ${calcValue}` : ""}
+    </div>
+  );
+}
 
-  return(<div>
-    
-  </div>)
+function ResetButton({ value, setpercentValFriend, setpercentVal }) {
+  const Clear = () => {
+    value("");
+    setpercentValFriend(0);
+    setpercentVal(0);
+  };
+  return <button onClick={Clear}>Delete</button>;
 }
