@@ -1,73 +1,99 @@
 import { useState } from "react";
+import "./index.css";
 
+const Cars = [
+  { manufacture: "bmw", model: "m3", id: 1 },
+  {
+    manufacture: "mercedes",
+    model: "S-class",
+    id: 2,
+  },
+];
 export default function AddingFriendEx() {
-  const [showForm, setShowForm] = useState(false); // Fixed: Renamed `seShowForm` to `setShowForm`
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(Cars);
+  const [showMenu, setShowmenu] = useState(false);
 
-  const handleShowForms = () => {
-    setShowForm((prev) => !prev); // Fixed: Corrected function name reference
-  };
-
-  const AddTheNewFriend = (newFriend) => {
-    setData((prevData) => [...prevData, newFriend]); // Fixed: Using previous state correctly
+  const onShowmeu = () => {
+    setShowmenu((pervShoeMenu) => !pervShoeMenu);
   };
 
   return (
     <>
-      <ListOfFriends data={data} />
-      {showForm && <Form onAddTheNewFriend={AddTheNewFriend} />} {/* Fixed: Removed unused `setData` prop */}
-      <Button onClick={handleShowForms}>{showForm ? "Close" : "Open"}</Button>
+      <div className="CarCreateDisplay-main-div">
+        <DisplayPost data={data} />
+        {showMenu && (
+          <CreateNewPost setData={setData} setShowmenu={setShowmenu} />
+        )}
+        <Button onClick={onShowmeu}>{showMenu ? "close" : "open"}</Button>
+      </div>
     </>
   );
 }
 
-function ListOfFriends({ data }) {
+function CreateNewPost({ setData, setShowmenu }) {
+  const [manufacture, setManufacture] = useState("");
+  const [model, setModel] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newCar = {
+      manufacture,
+      model,
+    };
+
+    if ((manufacture, model)) setData((d) => [...d, newCar]);
+    setManufacture("");
+    setModel("");
+    setShowmenu(false);
+  };
   return (
-    <div>
-      <p>List of Friends</p>
-      <FriendsFullName data={data} />
+    <div className="CarSecaoondaryDiv">
+      <p>Create Posts</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          className="carInput"
+          value={manufacture}
+          onChange={(e) => setManufacture(e.target.value)}
+        />
+        <input
+          className="carInput"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+        />
+        <Button>Add</Button>
+      </form>
     </div>
   );
 }
 
-function FriendsFullName({ data }) {
+function DisplayPost({ data }) {
+  return (
+    <div className="CarSecaoondaryDiv">
+      <p>Display Posts</p>
+      <ItemCardHolder data={data} />
+    </div>
+  );
+}
+
+function ItemCardHolder({ data }) {
   return (
     <>
-      {/* Fixed: `data` is an array, so we need to map over it */}
-      {data.map((friend, index) => (
-        <div key={index}>
-          <p>{friend.name}</p>
-          <p>{friend.surname}</p>
-        </div>
+      {data.map((car) => (
+        <li key={car.id}>
+          <h3>{car.manufacture}</h3>
+          <h3>{car.model}</h3>
+          <Button>asfa</Button>
+        </li>
       ))}
     </>
   );
 }
 
-function Form({ onAddTheNewFriend }) {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-
-  function handleSubmit(e) {
-    e.preventDefault(); // Fixed: Prevent form from refreshing the page
-
-    const newFriend = { name, surname };
-    onAddTheNewFriend(newFriend); // Fixed: Used passed-down function correctly
-
-    // Clear input fields after submission
-    setName("");
-    setSurname("");
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
-      <input value={surname} onChange={(e) => setSurname(e.target.value)} />
-      <Button type="submit">Add</Button> {/* Fixed: Added `type="submit"` */}
-    </form>
-  );
-}
-
 function Button({ children, onClick }) {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+    <button className="button-Car" onClick={onClick}>
+      {children}
+    </button>
+  );
 }

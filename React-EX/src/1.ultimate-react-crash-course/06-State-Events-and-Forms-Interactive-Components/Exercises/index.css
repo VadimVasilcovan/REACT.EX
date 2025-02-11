@@ -1,0 +1,28 @@
+.CarCreateDisplay-main-div{
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+
+.CarSecaoondaryDiv{
+    border: solid;
+    height: auto;
+    width: 30rem;
+    padding: 1rem;
+}
+
+.carInput{
+    width: 90%;
+    border: solid;
+    background-color: white;
+}
+
+.button-Car{
+    width: rem;
+    background-color: black;
+    border: none;
+    color: white;
+}
