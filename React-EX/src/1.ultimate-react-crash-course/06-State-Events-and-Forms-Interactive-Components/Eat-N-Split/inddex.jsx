@@ -39,8 +39,9 @@ export default function EatNSplit() {
 
 
 
-  function handleAddFriend(){
-    setAddFriend((prevFriend) => [...prevFriend, addFriend])
+  function handleAddFriend(newFriend){
+    setAddFriend((prevFriend) => [...prevFriend, newFriend])
+    setShow(false)
 
   }
   return (

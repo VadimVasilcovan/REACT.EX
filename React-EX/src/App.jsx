@@ -48,6 +48,7 @@ import AcordionApp from "./1.ultimate-react-crash-course/06-State-Events-and-For
 import StateEventExCopy from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/index-copy-children-prop";
 import TipCalculator from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Tip-calculator";
 import EatNSplit from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Eat-N-Split/inddex";
+import AddingFriendEx from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises";
 
 const App = () => {
   const defaultState = {
@@ -85,8 +86,7 @@ const App = () => {
       {/* <Provider store={store}>
        <Redux/>
        </Provider>*/}
-
-      <EatNSplit/>
+      <AddingFriendEx/>
     </>
   );
 };
