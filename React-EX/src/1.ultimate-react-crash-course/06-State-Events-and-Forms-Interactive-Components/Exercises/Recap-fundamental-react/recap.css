@@ -21,7 +21,7 @@
   }
   
   form input {
-    width: 100%;
+    width: d;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -71,5 +71,34 @@
   
   button:hover {
     background-color: #218838;
+  }
+  
+  .car-card {
+    display: inline-block; /* Keeps span behavior but makes it styled like a box */
+    border: 2px solid #007bff; /* Adds a nice blue border */
+    border-radius: 8px; /* Soft rounded edges */
+    padding: 12px 16px;
+    margin: 10px;
+    background: linear-gradient(135deg, #f0f0f0, #dfe9f3); /* Soft gradient */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: "Arial", sans-serif;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .car-card:hover {
+    transform: scale(1.05); /* Slight lift effect on hover */
+  }
+  
+  .car-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .car-card p:first-child {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff; /* Highlight the brand name */
   }
   
