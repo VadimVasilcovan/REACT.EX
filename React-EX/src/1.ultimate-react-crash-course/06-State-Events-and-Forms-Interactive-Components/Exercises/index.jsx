@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./index.css";
+import { Button, ItemCardHolder } from "./Button";
 
 const Cars = [
   { manufacture: "bmw", model: "m3", id: 1 },
@@ -42,10 +43,12 @@ function CreateNewPost({ setData, setShowmenu }) {
       model,
     };
 
-    if ((manufacture, model)) setData((d) => [...d, newCar]);
-    setManufacture("");
-    setModel("");
-    setShowmenu(false);
+    if ((manufacture, model)) {
+      setData((d) => [...d, newCar]);
+      setManufacture("");
+      setModel("");
+      setShowmenu(false);
+    }
   };
   return (
     <div className="CarSecaoondaryDiv">
@@ -76,24 +79,4 @@ function DisplayPost({ data }) {
   );
 }
 
-function ItemCardHolder({ data }) {
-  return (
-    <>
-      {data.map((car) => (
-        <li key={car.id}>
-          <h3>{car.manufacture}</h3>
-          <h3>{car.model}</h3>
-          <Button>asfa</Button>
-        </li>
-      ))}
-    </>
-  );
-}
 
-function Button({ children, onClick }) {
-  return (
-    <button className="button-Car" onClick={onClick}>
-      {children}
-    </button>
-  );
-}

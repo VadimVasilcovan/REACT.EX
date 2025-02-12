@@ -86,7 +86,7 @@ const App = () => {
       {/* <Provider store={store}>
        <Redux/>
        </Provider>*/}
-      <AddingFriendEx/>
+      <EatNSplit/>
     </>
   );
 };
