@@ -1,59 +1,8 @@
-import ToDoList from "./Props_ex_03/parent-component";
-import FilterParent from "./Props_ex_04/filter-parent-ex4";
-import CarFunction from "./update-object-in-state/update-object";
-import BookcksFunction from "./update-object-in-state_ex_01/update-object-in-state_ex_01";
-import ListOfStudents from "./update-object-in-state_ex_2 (+props)/List-of-students-parent";
-import MyComponent from "./updater-function/updater-function";
-import AddingEmploy from "./updater-function-ex-1/AddingEmployParent";
-import MyUseEfectFun from "./useEfect/useEfect";
-import Demo from "./useEfect-fetching-data/useEfect-fetching-data";
-import FetchDataex1 from "./useEfect-fetching-data/useEfect-fetching-data";
-import PokeApi from "./useEfect-fetching-data/pokeApi-fetch-ex";
-import GetData from "./Mastering-Fetch-API/basic-fetch-and-promises";
-import AsyncAwaytMethod from "./Mastering-Fetch-API/async-awayt";
-import UrlRequestHeaders from "./Mastering-Fetch-API/URL-Request-Headers";
-import TheListOfPersonParent from "./project-filter-api/parent-component";
-import CarList from "./display-data-ex/display-car";
-import ParentApiEx2 from "./project-filter-api-02.jsx/parent-project-filter-api.02";
-import InputExercise from "./7_days_of_recapitulation/10.12.2024/ex.10.12.2024";
-import NewToDoList from "./7_days_of_recapitulation/11.12.2024/toDoList";
-import CreatingList from "./7_days_of_recapitulation/11.12.2024/ex_0.2";
-import ToDoListUsingProps from "./7_days_of_recapitulation/11.12.2024/ex_0.3_props/ex_0.3_parent_coponent";
-import FilterMethodEX01 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.01";
-import FilterMethodEX02 from "./7_days_of_recapitulation/12.12.2024/learning_filter_method/filter_method_ex.0.2";
-import TaskManager from "./7_days_of_recapitulation/13.12.2024/task_manager";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import Redux from "./redux";
-import AppLazyLoading from "./lazy-loading-ex/App-lazy-Loading-ex";
-import UseRefEx1 from "./react-hooks/useRef";
-import UseMemoEx1 from "./useMemo/useMemo.ex.1";
-import FindIndexMethod from "./array-methods/method-findIndex/index-1";
-import FindIndecMethod02 from "./array-methods/method-findIndex/index-2";
-import MethodExercise from "./array-methods/method-findIndex/index-3";
-import AdANumber from "./array-methods/method-findIndex/index-4";
-import FindIndex05 from "./array-methods/method-findIndex/index-05";
-import FindIndexEx06 from "./array-methods/method-findIndex/index-06";
-import FindIndex07 from "./array-methods/method-findIndex/index-7";
-import FilterMethod4 from "./array-methods/method-filter/index-4";
-import FilterMethod05 from "./array-methods/method-filter/index-5";
-import DebuggingEx from "./learn-debugging/index-01";
-import Counter from "./learn-debugging/index-01";
-import TodoApp from "./learn-debugging/index-01";
-import NewExercises from "./Exercises";
-import ReactEx from "./1.ultimate-react-crash-course/Working-with-components-props-and-jsx/Rendering-root-component";
-import StateEventEx from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components";
-import TravelingList from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/mini-project";
-import AcordionApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Acordion-component/Acordion";
-import StateEventExCopy from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/index-copy-children-prop";
-import TipCalculator from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Tip-calculator";
-import EatNSplit from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Eat-N-Split/inddex";
-import AddingFriendEx from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises";
+import SellingCars from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/add-update-object-in-array";
+
 
 const App = () => {
-  const defaultState = {
-    cash: 0,
-  };
+  
 
   {
     /* action = {type: '', payload: '?'}*/
@@ -79,14 +28,8 @@ const App = () => {
 
   return (
     <>
-      {/*<University setSubmitPerson={setSubmitPerson} />
-            <ShowResult submitPerson={submitPerson} />
-    */}
-
-      {/* <Provider store={store}>
-       <Redux/>
-       </Provider>*/}
-      <EatNSplit/>
+    
+  <SellingCars/>
     </>
   );
 };
