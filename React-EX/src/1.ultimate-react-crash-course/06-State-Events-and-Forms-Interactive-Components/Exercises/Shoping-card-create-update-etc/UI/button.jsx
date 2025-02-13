@@ -1,3 +1,10 @@
-export default function Button({children, onClick}){
-    return(<button style={{marginRight: 10}} onClick={onClick}>{children}</button>)
+export default function Button({ children, onClick, backgroundColor }) {
+    return (
+        <button 
+            style={{ marginRight: 10, backgroundColor }} 
+            onClick={onClick}
+        >
+            {children}
+        </button>
+    );
 }

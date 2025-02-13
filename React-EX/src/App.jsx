@@ -1,5 +1,6 @@
 import SellingCars from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/add-update-object-in-array";
 import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Shoping-card-create-update-etc";
+import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
   return (
     <>
     
-  <MiniShopingApp/>
+  <UsePopcornApp/>
     </>
   );
 };

@@ -12,37 +12,62 @@ const cardList = [
 ];
 export default function MiniShopingApp() {
   const [product, setProduct] = useState([]);
-  const [addToFavorite, setAddToFavorite] = useState([])
-  const [showMenu, setShowMenu] = useState(false)
-  const [showMenuFavorites, setShowMenuFavotites] = useState(false)
+  const [addToFavorite, setAddToFavorite] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showMenuFavorites, setShowMenuFavotites] = useState(false);
+  const [productInFavorite, setProductInFavorite] = useState(false);
 
-  function handleShowMenu(){
-    setShowMenu(!showMenu)
-  } 
-
-  function handleShowFavorites (){
-    setShowMenuFavotites(!showMenuFavorites)
+  function handleShowMenu() {
+    setShowMenu(!showMenu);
   }
 
-  function handleAddToFavorite (productItem){
-    setAddToFavorite((f) => [...f, productItem])
+  function handleShowFavorites() {
+    setShowMenuFavotites(!showMenuFavorites);
   }
+
+  function handleAddToFavorite(productItem) {
+    productItem.favorite = true;
+    setAddToFavorite((f) => [...f, productItem]);
+  }
+
+  function deleteFromFavorite(productToRemove) {
+    setAddToFavorite((a) =>
+      a.filter((product) => product.id !== productToRemove.id)
+    );
+
+    productToRemove.favorite = false; // Reset favorite property
+  }
+
   return (
     <div className="shoping-app-main-div">
-      {showMenu && <div className="shoping-app-secondary-div">
-        <CreateUpdateProducts setProduct={setProduct} />
-      </div>}
+      {showMenu && (
+        <div className="shoping-app-secondary-div">
+          <CreateUpdateProducts
+            setProduct={setProduct}
+            productInFavorite={productInFavorite}
+          />
+        </div>
+      )}
       <div className="shoping-app-secondary-div">
-        <DisplayListProducts product={product}  handleShowMenu={handleShowMenu} handleShowFavorites={handleShowFavorites} handleAddToFavorite={handleAddToFavorite}/>
+        <DisplayListProducts
+          product={product}
+          handleShowMenu={handleShowMenu}
+          handleShowFavorites={handleShowFavorites}
+          handleAddToFavorite={handleAddToFavorite}
+          deleteFromFavorite={deleteFromFavorite} // Add this line
+          productInFavorite={productInFavorite}
+        />
       </div>
-      {showMenuFavorites && <div className="shoping-app-secondary-div">
-        <ListFavoriteProducts addToFavorite={addToFavorite} />
-      </div>}
+      {showMenuFavorites && (
+        <div className="shoping-app-secondary-div">
+          <ListFavoriteProducts addToFavorite={addToFavorite} deleteFromFavorite={deleteFromFavorite}/>
+        </div>
+      )}
     </div>
   );
 }
 
-function CreateUpdateProducts({ setProduct }) {
+function CreateUpdateProducts({ setProduct, productInFavorite }) {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productDescript, setProductDescript] = useState("");
@@ -58,6 +83,7 @@ function CreateUpdateProducts({ setProduct }) {
         price: productPrice,
         description: productDescript,
         inStock: productInStock,
+        favorite: productInFavorite,
       };
       setProduct((p) => [...p, newProduct]);
       setProductName("");
@@ -92,20 +118,38 @@ function CreateUpdateProducts({ setProduct }) {
   );
 }
 
-function DisplayListProducts({ product,  handleShowMenu, handleShowFavorites, handleAddToFavorite}) {
+function DisplayListProducts({
+  product,
+  handleShowMenu,
+  handleShowFavorites,
+  handleAddToFavorite,
+  productInFavorite,
+  deleteFromFavorite
+}) {
   return (
     <div>
-      <p>The list of products</p>
+      <h2>The list of products</h2>
       <Button onClick={handleShowMenu}>Add a product</Button>
       <Button onClick={handleShowFavorites}>Wish List</Button>
       {product.map((products) => (
-        <ProductCard products={products} key={products.id} handleAddToFavorite={handleAddToFavorite} />
+        <ProductCard
+          products={products}
+          key={products.id}
+          handleAddToFavorite={handleAddToFavorite}
+          productInFavorite={productInFavorite}
+          deleteFromFavorite={deleteFromFavorite}
+        />
       ))}
     </div>
   );
 }
 
-function ProductCard({ products, handleAddToFavorite }) {
+function ProductCard({
+  products,
+  handleAddToFavorite,
+  deleteFromFavorite,
+
+}) {
   return (
     <div className="product-card">
       <h3>{products.name}</h3>
@@ -119,17 +163,26 @@ function ProductCard({ products, handleAddToFavorite }) {
         <strong>Availability:</strong>{" "}
         {products.inStock ? "In Stock ✅" : "Out of Stock ❌"}
       </p>
-      <Button onClick={() => handleAddToFavorite(products)}>Add to favorites</Button>
+      <p>favorite {products.favorite && "✅"}</p>
+
+      {products.favorite ? (
+        <Button backgroundColor={'red'} onClick={() => deleteFromFavorite(products)}>Delete</Button>
+      ) : (
+        <Button  onClick={() => handleAddToFavorite(products)}>
+          Add to favorites
+        </Button>
+      )}
     </div>
   );
 }
 
-function ListFavoriteProducts({addToFavorite}) {
-  return (<>
-  <p>The favorite products</p>
-  {addToFavorite.map((products) => (
-        <ProductCard products={products} key={products.id} />
+function ListFavoriteProducts({ addToFavorite,deleteFromFavorite  }) {
+  return (
+    <>
+      <p>The favorite products</p>
+      {addToFavorite.map((products) => (
+        <ProductCard products={products} key={products.id}  deleteFromFavorite={deleteFromFavorite} />
       ))}
-    
-  </>)
+    </>
+  );
 }
