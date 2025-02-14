@@ -2,6 +2,7 @@ import SellingCars from "./1.ultimate-react-crash-course/06-State-Events-and-For
 import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Shoping-card-create-update-etc";
 import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
+import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
 
 const App = () => {
   
@@ -32,7 +33,8 @@ const App = () => {
     <>
     
   {/*<UsePopcornApp/>*/}
-  <StarRating maxRating={10}/>
+  {/*<StarRating maxRating={10}/>*/}
+  <ComponentcompositionEx/>
   
     </>
   );

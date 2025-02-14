@@ -31,7 +31,7 @@ export default function StarRating({ maxRating = 5 }) {
           full={tempRating ? tempRating >=i +1 : rating >= i + 1}/>
         ))}
       </div>
-      <p style={textStyle}>{tempRating || ""}</p>
+      <p style={textStyle}>{tempRating || rating || ""}</p>
     </div>
   );
 }
