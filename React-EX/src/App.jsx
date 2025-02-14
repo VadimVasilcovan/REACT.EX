@@ -33,7 +33,7 @@ const App = () => {
     
   {/*<UsePopcornApp/>*/}
   <StarRating maxRating={10}/>
-  <StarRating />
+  
     </>
   );
 };
