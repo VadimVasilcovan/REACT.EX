@@ -3,6 +3,7 @@ import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-
 import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
+import ComponentComposition02 from "./1.ultimate-react-crash-course/component-composition-ex/index-01";
 
 const App = () => {
   
@@ -32,9 +33,10 @@ const App = () => {
   return (
     <>
     
+  
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
-  <ComponentcompositionEx/>
+  <ComponentComposition02/>
   
     </>
   );

@@ -66,7 +66,7 @@ export default function UsePopcornApp() {
           <MovieList movies={movies} />
         </Box>
         <Box>
-        <WatchedSummary watched={watched} />
+          <WatchedSummary watched={watched} />
           <WatchedMoviesList watched={watched} />
         </Box>
       </Main>
@@ -111,17 +111,13 @@ function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="box">
-      <button
-        className="btn-toggle"
-        onClick={() => setIsOpen((open) => !open)}
-      >
+      <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
         {isOpen ? "–" : "+"}
       </button>
-      {isOpen &&  children }
+      {isOpen && children}
     </div>
   );
 }
-
 
 function Movie({ movie }) {
   return (
@@ -170,8 +166,6 @@ function MovieList({ movies }) {
     </ul>
   );
 }
-
-
 
 function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
