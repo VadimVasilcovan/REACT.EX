@@ -1,94 +1,194 @@
+/* Main Wrapper */
+.main-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc29; /* Warm yellow */
+    background-color: #1e1e2e; /* Dark navy */
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Card Container */
+.box-info-ex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Box Wrapper */
+.box {
+    border: solid 2px #4a4e69;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #2a2a3d;
+    overflow: hidden;
+}
+
+/* Short List Person Data */
 .shortListPersonData {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #1e1e2e; /* Dark navy background */
-  border: 2px solid #4a4e69; /* Muted purple border */
-  border-radius: 12px; /* Rounded corners */
-  padding: 16px;
-  margin: 10px;
-  width: 280px; /* Slightly wider */
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  transition: transform 0.2s ease-in-out;
-  color: #f8f8f8; /* Light text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e2e; /* Dark navy background */
+    border: 2px solid #4a4e69; /* Muted purple border */
+    border-radius: 12px;
+    padding: 16px;
+    margin: 10px;
+    width: 280px; /* Slightly wider */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.2s ease-in-out;
+    color: #f8f8f8; /* Light text */
 }
 
 .shortListPersonData:hover {
-  transform: scale(1.05); /* Slight scale-up on hover */
+    transform: scale(1.05);
 }
 
-.shortListPersonData div {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
-}
-
+/* Person Info */
 .shortListPersonData .person-info {
-  background-color: #2a2a3d; /* Slightly lighter section */
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  width: 90%;
+    background-color: #2a2a3d;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
 }
 
-.shortListPersonData p {
-  margin: 5px 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #f2e9e4; /* Soft pinkish-white */
-}
-
+/* Buttons */
 .shortListPersonData button {
-  background-color: #ff6b6b; /* Vibrant red */
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease-in-out;
+    background-color: #ff6b6b; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+    margin: 5px;
 }
 
 .shortListPersonData button:nth-child(2) {
-  background-color: #ffcc29; /* Warm yellow for "Update" */
-  color: #333;
+    background-color: #ffcc29; /* Yellow */
+    color: #333;
 }
 
 .shortListPersonData button:nth-child(3) {
-  background-color: #4caf50; /* Green for "Add to short list" */
+    background-color: #4caf50; /* Green */
 }
 
 .shortListPersonData button:hover {
-  filter: brightness(1.2);
+    filter: brightness(1.2);
 }
 
-/* Styling for the main header */
-.header {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffcc29; /* Warm yellow */
-  background-color: #1e1e2e; /* Dark navy */
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
- 
-  width: 100%;
-  max-width: 600px;
+/* Search Input */
+input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 2px solid #4a4e69;
+    background-color: #2a2a3d;
+    color: #f8f8f8;
 }
 
-.box-info-ex {
-  display: flex;
-  flex-direction: row; /* Stacks child elements vertically */
-  align-items: center; /* Centers child elements horizontally */
-  justify-content: center; /* Centers child elements vertically */
+
+.show-hide-main-div{
     
-  overflow: hidden;
-  margin: 15px; /* Adds space outside the box */
-  border-radius: 10px; /* Rounded corners */
-
-  width: 100%; /* Ensures the box is responsive */
-  max-width: 600px; /* Maximum width for larger screens */
+    width: auto;
+    height: auto;
 }
+
+.main-div-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Aligns content to the left */
+    justify-content: flex-start; /* Positions content at the top */
+}
+
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between elements */
+    background-color: #1e1e2e; /* Dark navy background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px; /* Optimal form width */
+    color: white;
+    border: 2px solid #4a4e69; /* Muted purple border */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Form labels (p elements) */
+  .form-element p {
+    margin: 5px 0 2px;
+    font-weight: bold;
+    color: #ffcc29; /* Warm yellow */
+  }
+  
+  /* Input fields */
+  .form-element input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ffcc29;
+    background-color: #2a2a3d;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .form-element input:focus {
+    outline: none;
+    border-color: #ff6b6b; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.7);
+  }
+  
+  /* Section headers */
+  .form-element h2 {
+    font-size: 18px;
+    color: #ff6b6b; /* Vibrant red */
+    margin-top: 15px;
+  }
+  
+  /* Button */
+  .form-element button {
+    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .form-element button:hover {
+    background-color: #45a049;
+  }
+  
