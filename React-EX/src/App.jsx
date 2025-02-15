@@ -4,6 +4,7 @@ import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
 import ComponentComposition02 from "./1.ultimate-react-crash-course/component-composition-ex/index-01";
+import ComponentExercises03 from "./1.ultimate-react-crash-course/component-composition-ex/index-02";
 
 const App = () => {
   
@@ -36,7 +37,7 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
-  <ComponentComposition02/>
+  <ComponentExercises03/>
   
     </>
   );

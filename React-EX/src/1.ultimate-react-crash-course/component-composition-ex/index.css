@@ -1,0 +1,94 @@
+.shortListPersonData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e1e2e; /* Dark navy background */
+  border: 2px solid #4a4e69; /* Muted purple border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 16px;
+  margin: 10px;
+  width: 280px; /* Slightly wider */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out;
+  color: #f8f8f8; /* Light text */
+}
+
+.shortListPersonData:hover {
+  transform: scale(1.05); /* Slight scale-up on hover */
+}
+
+.shortListPersonData div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.shortListPersonData .person-info {
+  background-color: #2a2a3d; /* Slightly lighter section */
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+}
+
+.shortListPersonData p {
+  margin: 5px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f2e9e4; /* Soft pinkish-white */
+}
+
+.shortListPersonData button {
+  background-color: #ff6b6b; /* Vibrant red */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.shortListPersonData button:nth-child(2) {
+  background-color: #ffcc29; /* Warm yellow for "Update" */
+  color: #333;
+}
+
+.shortListPersonData button:nth-child(3) {
+  background-color: #4caf50; /* Green for "Add to short list" */
+}
+
+.shortListPersonData button:hover {
+  filter: brightness(1.2);
+}
+
+/* Styling for the main header */
+.header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffcc29; /* Warm yellow */
+  background-color: #1e1e2e; /* Dark navy */
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+ 
+  width: 100%;
+  max-width: 600px;
+}
+
+.box-info-ex {
+  display: flex;
+  flex-direction: row; /* Stacks child elements vertically */
+  align-items: center; /* Centers child elements horizontally */
+  justify-content: center; /* Centers child elements vertically */
+    
+  overflow: hidden;
+  margin: 15px; /* Adds space outside the box */
+  border-radius: 10px; /* Rounded corners */
+
+  width: 100%; /* Ensures the box is responsive */
+  max-width: 600px; /* Maximum width for larger screens */
+}
