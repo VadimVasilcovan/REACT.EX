@@ -46,7 +46,9 @@ function Container({ children }) {
 
   return (
     <div>
-      <button onClick={() => setShow((s) => !s)}></button>
+      <button onClick={() => setShow((s) => !s)}>
+        {show ? "close" : "Open"}
+      </button>
       {show && children}
     </div>
   );
@@ -75,10 +77,10 @@ function ShortData({ i }) {
 }
 
 function LongData({ i }) {
-    const [name, setName] = useState(i.name);
+  const [name, setName] = useState(i.name);
   return (
     <div>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input value={name} onChange={(e) => setName(e.target.value)} />
       <p>{i.name}</p>
       <p>{i.email}</p>
       <p>{i.location}</p>
