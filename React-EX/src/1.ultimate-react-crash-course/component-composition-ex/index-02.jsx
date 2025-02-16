@@ -54,33 +54,75 @@ export default function ComponentExercises03() {
 function MainPaige() {
   const [data, setData] = useState(jsonData);
   const [show, setShow] = useState(false);
+  const [showShortList, setShowShortList] = useState(false);
+  const [addToShortList, setAddToShortList] = useState([]);
 
-  function handleShowMenu(){
-    setShow((pervShow) => !pervShow)
+  function handleShowMenu() {
+    setShow((pervShow) => !pervShow);
+  }
+
+  function handleShowShortList() {
+    setShowShortList((pervShowShortList) => !pervShowShortList);
+  }
+
+  function AddToShortList(item) {
+    setAddToShortList([...addToShortList, item]);
+  }
+
+  function DeleteItem(deleteIndex) {
+    setData((pervData) => pervData.filter((item) => item.id !== deleteIndex));
+  }
+
+  function DeleteFromShortList(deleteIndex) {
+    setAddToShortList((pervShortList) =>
+      pervShortList.filter((item) => item.id !== deleteIndex)
+    );
   }
   return (
     <>
       <header className="header">Pagina principala</header>
       <Navbar>
         <Button onclick={handleShowMenu}>Add Person</Button>
+        <Button onclick={handleShowShortList}>show short list </Button>
         <Filter />
         <Search />
       </Navbar>
       <div className="main-div-info">
-        {show && 
-        <ShowHideBox>
-           <AddPerson setData={setData} data={data}/>
-        </ShowHideBox>}
+        {show && (
+          <ShowHideBox>
+            <AddPerson setData={setData} data={data} />
+          </ShowHideBox>
+        )}
+        {showShortList && (
+          <ShowHideBox>
+            <ListOfData data={addToShortList}>
+              {(personInfo) => (
+                <LongListData
+                  personInfo={personInfo}
+                  key={personInfo.id}
+                  DeleteFromShortList={DeleteFromShortList}
+                />
+              )}
+            </ListOfData>
+          </ShowHideBox>
+        )}
         <Box>
           <ListOfData data={data}>
-            {(personInfo) => <ShortListOfData personInfo={personInfo} />}
+            {(personInfo) => (
+              <ShortListOfData
+                key={personInfo.id}
+                personInfo={personInfo}
+                DeleteItem={DeleteItem}
+                AddToShortList={AddToShortList}
+              />
+            )}
           </ListOfData>
+
           {/*
         <ListOfData data={data}>
             {(personInfo) => <LongListData personInfo={personInfo}/>}
         </ListOfData>
         */}
-         
         </Box>
       </div>
     </>
@@ -107,7 +149,7 @@ function Button({ children, onclick }) {
   );
 }
 
-function ShowHideBox({children}) {
+function ShowHideBox({ children }) {
   return <div className="show-hide-main-div">{children}</div>;
 }
 
@@ -131,13 +173,15 @@ function ListOfData({ data, children }) {
   );
 }
 
-function ShortListOfData({ personInfo }) {
+function ShortListOfData({ personInfo, DeleteItem, AddToShortList }) {
   return (
-    <div className="shortListPersonData">
+    <div className="shortListPersonData" key={personInfo.id}>
       <div>
-        <Button>Delete</Button>
+        <Button onclick={() => DeleteItem(personInfo.id)}>Delete</Button>
         <Button>Update</Button>
-        <Button>Add to short list</Button>
+        <Button onclick={() => AddToShortList(personInfo)}>
+          Add to short list
+        </Button>
       </div>
       <div className="person-info">
         <p>Name:{personInfo.name}</p>
@@ -147,9 +191,10 @@ function ShortListOfData({ personInfo }) {
   );
 }
 
-function LongListData({ personInfo }) {
+function LongListData({ personInfo, DeleteFromShortList }) {
   return (
-    <div>
+    <div className="long-list-div" key={personInfo.id}>
+      <Button onclick={() => DeleteFromShortList(personInfo.id)}>Delete</Button>
       <p>Name:{personInfo.name}</p>
       <p>email:{personInfo.e}</p>
       <p>age:{personInfo.age}</p>
@@ -173,40 +218,65 @@ function Filter() {
   );
 }
 
-function AddPerson({setData, data}){
-    const [name, setName] = useState('')
-    const [email, setEmail]= useState('')
-    const [age, setAge] = useState('')
-    const[street, setStreet] = useState('')
-    const[city, setCity] = useState('')
-    const[state, setState]=useState('')
-    const[zip, setZip] = useState()
+function AddPerson({ setData, data }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
 
-    function submitForm(){
-        if(name, email, age, street, city, state, zip){
-            setData([...data, {name, email, age, street, city, state, zip}])
-        }
+  function submitForm(e) {
+    e.preventDefault();
+
+    const newPerson = {
+      // id={personInfo.length+ 1,}
+      name,
+      email,
+      age,
+      address: { street, city, state, zip },
+    };
+    if (name && email && age && street && city && state && zip) {
+      setData([...data, newPerson]);
+      setName("");
+      setEmail("");
+      setAge("");
+      setStreet("");
+      setCity("");
+      setState("");
+      setZip("");
+    } else {
+      alert("Please fill out all fields.");
     }
+  }
 
-    return(<form className="form-element" onSubmit={submitForm}>
-        <h2>Add A new Person</h2>
-        <p>name:</p>
-        <input value={name} onChange={(e) => setName(e.target.value)}/>
-        <p>email:</p>
-        <input value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <p>age:</p>
-        <input value={age} onChange={(e) => setAge(e.target.value)}/>
-        <h2>Street</h2>
-        <p>street:</p>
-        <input value={street} onChange={(e) => setStreet(e.target.value)}/>
-        <p>city</p>
-        <input value={city} onChange={(e) => setCity(e.target.value)}/>
-        <p>state</p>
-        <input value={state} onChange={(e) => setState(e.target.value)}/>
-        <p>zip</p>
-        <input value={zip}onChange={(e) => setZip(e.target.value)}/>
-        <Button>Add</Button>
-    </form>)
+  return (
+    <form className="form-element" onSubmit={submitForm}>
+      <h2>Add A new Person</h2>
+      <p>name:</p>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <p>email:</p>
+      <input value={email} onChange={(e) => setEmail(e.target.value)} />
+      <p>age:</p>
+      <input value={age} onChange={(e) => setAge(e.target.value)} />
+      <h2>Street</h2>
+      <p>street:</p>
+      <input value={street} onChange={(e) => setStreet(e.target.value)} />
+      <p>city</p>
+      <input value={city} onChange={(e) => setCity(e.target.value)} />
+      <p>state</p>
+      <input value={state} onChange={(e) => setState(e.target.value)} />
+      <p>zip</p>
+      <input value={zip} onChange={(e) => setZip(e.target.value)} />
+      <Button>Add</Button>
+    </form>
+  );
+}
+
+
+function Search(){
+    
 }
 {
   /*{
