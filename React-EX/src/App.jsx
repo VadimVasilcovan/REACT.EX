@@ -2,6 +2,7 @@ import SellingCars from "./1.ultimate-react-crash-course/06-State-Events-and-For
 import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Shoping-card-create-update-etc";
 import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
+import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/text-expander";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
 import ComponentComposition02 from "./1.ultimate-react-crash-course/component-composition-ex/index-01";
 import ComponentExercises03 from "./1.ultimate-react-crash-course/component-composition-ex/index-02";
@@ -37,7 +38,8 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
-  <ComponentExercises03/>
+ 
+  <TextExpander/>
   
     </>
   );

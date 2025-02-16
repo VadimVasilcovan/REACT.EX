@@ -275,9 +275,7 @@ function AddPerson({ setData, data }) {
 }
 
 
-function Search(){
-    
-}
+
 {
   /*{
     id: 1,
