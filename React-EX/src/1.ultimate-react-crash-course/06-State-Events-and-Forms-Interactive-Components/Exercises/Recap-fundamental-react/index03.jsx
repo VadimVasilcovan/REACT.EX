@@ -31,18 +31,27 @@ export default function ArrayEx03() {
         : [...pervArray2, personToReplace]
     );
   }
+
+
+  function deleteIteArray1(indexToDelete){
+    setArray1((pervArray1) =>pervArray1.filter((p) => p !== indexToDelete))
+  }
+
+  function deleteIteArray2(indexToDelete){
+    setArray2((pervArray2) =>pervArray2.filter((p) => p !== indexToDelete))
+  }
   return (
     <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
         
       <div>
         <ArrayList listOfItems={array1}>
-          {(item) => <PersonCardHolder item={item} replace={reolaceFirstListToSecond}/>}
+          {(item) => <PersonCardHolder item={item} replace={reolaceFirstListToSecond} deleteItem={deleteIteArray1}/>}
         </ArrayList>
       </div>
 
       <div>
         <ArrayList listOfItems={array2}>
-          {(item) => <PersonCardHolder item={item} replace={replace} />}
+          {(item) => <PersonCardHolder item={item} replace={replace} deleteItem={deleteIteArray2} />}
         </ArrayList>
       </div>
     </div>
@@ -59,12 +68,13 @@ function ArrayList({ listOfItems, children }) {
   );
 }
 
-function PersonCardHolder({ item, replace }) {
+function PersonCardHolder({ item, replace, deleteItem }) {
   return (
-    <div>
+    <div style={{gap: "5px"}}>
       <p>{item.id}</p>
       <p>{item.name}</p>
       <button onClick={() => replace(item)}>🙆🏿</button>
+      <button onClick={() => deleteItem(item)}>❌</button>
     </div>
   );
 }

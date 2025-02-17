@@ -2,6 +2,7 @@ import AnotherEX from "./1.ultimate-react-crash-course/06-State-Events-and-Forms
 import SellingCars from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/add-update-object-in-array";
 import ArrayExercises from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/index02";
 import ArrayEx03 from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/index03";
+import ArrayEX04 from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/index04";
 import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Shoping-card-create-update-etc";
 import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
@@ -42,7 +43,7 @@ const App = () => {
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
  
-  <ArrayEx03/>
+  <ArrayEX04/>
   
     </>
   );
