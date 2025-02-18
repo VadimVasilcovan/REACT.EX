@@ -98,7 +98,7 @@ function ListOfCars({ carsList, onShowMenu }) {
 
 function CarCardHolder({ Caritem }) {
   return (
-    <span className="car-card" > 
+    <span className="car-card">
       <p>
         Brand:{Caritem.brand} Model:{Caritem.model} Year:{Caritem.year} color:
         {Caritem.color}

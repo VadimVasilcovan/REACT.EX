@@ -166,7 +166,7 @@ function AddNewPerson({ personInfo, setPersonInfo }) {
     };
 
     if (!name || !age || !email || !phone) {
-      alert('pashol nahui')
+      alert("pashol nahui");
     } else {
       setPersonInfo([...personInfo, newPerson]);
       setName("");

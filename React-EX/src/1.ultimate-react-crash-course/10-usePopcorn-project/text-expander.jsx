@@ -30,11 +30,7 @@ export default function TextExpander() {
         doloremque, praesentium natus quae iure hic modi dsasd .
       </ExpandingTheText>
 
-      <ExpandingTheText
-        cardDesign={cardDesign}
-        minLength={55}
-       
-      >
+      <ExpandingTheText cardDesign={cardDesign} minLength={55}>
         , dsa ipsum das sit das dsad dcsdzcv cvzzx. Soluta porro, culpa,
         doloremque, praesentium natus quae iure hic modi dsasd .
       </ExpandingTheText>

@@ -25,7 +25,7 @@ export default function ArrayExercises() {
   }
 
   function addtoList21(person) {
-      setFirst((pervFirst) =>
+    setFirst((pervFirst) =>
       pervFirst.some((pervFirst) => pervFirst.id === person.id)
         ? first
         : [...first, person]
@@ -48,7 +48,9 @@ export default function ArrayExercises() {
       <div>
         <h3>Second List</h3>
         <MapTheLst ArrayName={second}>
-          {(item) => <ItemCard key={item.id} item={item} addtoList={addtoList21}/>}
+          {(item) => (
+            <ItemCard key={item.id} item={item} addtoList={addtoList21} />
+          )}
         </MapTheLst>
       </div>
     </div>
