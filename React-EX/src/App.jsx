@@ -10,6 +10,7 @@ import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
 import ComponentComposition02 from "./1.ultimate-react-crash-course/component-composition-ex/index-01";
 import ComponentExercises03 from "./1.ultimate-react-crash-course/component-composition-ex/index-02";
+import AppCapitol11ex from "./11-How-react-work-behind";
 
 const App = () => {
   
@@ -43,7 +44,7 @@ const App = () => {
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
  
-  <ArrayEX04/>
+  <AppCapitol11ex/>
   
     </>
   );
