@@ -1,3 +1,4 @@
+import EatNSplit from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Eat-N-Split/inddex";
 import AnotherEX from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react";
 import SellingCars from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/add-update-object-in-array";
 import ArrayExercises from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Recap-fundamental-react/index02";
@@ -44,7 +45,7 @@ const App = () => {
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
  
-  <AppCapitol11ex/>
+  <EatNSplit/>
   
     </>
   );
