@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './index.css'
+import "./index.css";
 
 const content = [
   {
@@ -26,6 +26,9 @@ export default function AppCapitol11ex() {
     </div>
   );
 }
+
+
+console.log(<DifferentContent/>)
 
 function Tabbed({ content }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -64,7 +67,7 @@ function TabContent({ item }) {
   const [likes, setLikes] = useState(0);
 
   function handleInc(numheart) {
-    setLikes(likes + numheart);
+    setLikes((l) => l + numheart);
   }
 
   return (
@@ -79,8 +82,8 @@ function TabContent({ item }) {
 
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
-          <button onClick={ () => handleInc(1)}>+</button>
-          <button onClick={() =>handleInc(3)}>+++</button>
+          <button onClick={() => handleInc(1)}>+</button>
+          <button onClick={() => handleInc(3)}>+++</button>
         </div>
       </div>
 
