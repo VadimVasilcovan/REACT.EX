@@ -28,7 +28,7 @@ export default function AppCapitol11ex() {
 }
 
 
-console.log(<DifferentContent/>)
+
 
 function Tabbed({ content }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -66,8 +66,23 @@ function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
 
-  function handleInc(numheart) {
-    setLikes((l) => l + numheart);
+
+  console.log('RENDER')
+  function handleInc() {
+    setLikes((l) => l + 1);
+  }
+
+
+  function tripleInc() {
+    setLikes((l) => l + 3);
+  }
+
+
+
+  function handleUndo(){
+    setShowDetails(true)
+    setLikes(0)
+    console.log(likes)
   }
 
   return (
@@ -82,13 +97,13 @@ function TabContent({ item }) {
 
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
-          <button onClick={() => handleInc(1)}>+</button>
-          <button onClick={() => handleInc(3)}>+++</button>
+          <button onClick={handleInc}>+</button>
+          <button onClick={tripleInc}>+++</button>
         </div>
       </div>
 
       <div className="tab-undo">
-        <button>Undo</button>
+        <button onClick={handleUndo}>Undo</button>
         <button>Undo in 2s</button>
       </div>
     </div>
