@@ -56,17 +56,28 @@ export default function UsePopcornApp() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
-  const query ='interstellar'
+  const [error, setError] = useState('')
+  const query ='saddsadas'
 
 useEffect(  
   
   function(){
     async function fetchMovies(){
-      setIsLoading(true)
+      try {setIsLoading(true)
   const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
-        const data = await res.json()
+
+      if(!res.ok) throw new Error('Something went wrong with fetching movies')
+
+      const data = await res.json()
+      if (data.Response === 'False') throw new Error('the Movie was not find')
         setMovies(data.Search)
-        setIsLoading(false)
+        console.log(data)
+     }catch(err){
+          console.error(err.message)
+          setError(err.message)
+        }finally{
+          setIsLoading(false)
+        }
         
     
     }
@@ -83,7 +94,10 @@ useEffect(
       </Navbar>
       <Main>
         <Box>
-         { isLoading ? <Loader/> : <MovieList movies={movies} />}
+        {/* { isLoading ? <Loader/> : */}
+        {isLoading &&  <Loader/>}
+        {!isLoading && !error && <MovieList movies={movies} />}
+        {error && <ErrorMessage  message={error}/>}
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
@@ -100,8 +114,14 @@ useEffect(
 
 function Loader({}){
   return(<h1 className="'Loading...">
-    'loading... '
+    Loading... 
   </h1>)
+}
+
+function ErrorMessage({message}){
+  return <p className="error">
+    <span>🫷🏿</span>{message}
+  </p>
 }
 function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
