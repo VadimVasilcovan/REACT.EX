@@ -55,15 +55,23 @@ const average = (arr) =>
 export default function UsePopcornApp() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+  const query ='interstellar'
 
-
-useEffect(() =>{
+useEffect(  
   
-  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
-    .then((res) => res.json())
-    .then((data) => setMovies(data.Search))
-
-},[])
+  function(){
+    async function fetchMovies(){
+      setIsLoading(true)
+  const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+        const data = await res.json()
+        setMovies(data.Search)
+        setIsLoading(false)
+        
+    
+    }
+    fetchMovies()
+  },[])
 
   
   return (
@@ -75,7 +83,7 @@ useEffect(() =>{
       </Navbar>
       <Main>
         <Box>
-          <MovieList movies={movies} />
+         { isLoading ? <Loader/> : <MovieList movies={movies} />}
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
@@ -86,6 +94,15 @@ useEffect(() =>{
   );
 }
 
+
+
+
+
+function Loader({}){
+  return(<h1 className="'Loading...">
+    'loading... '
+  </h1>)
+}
 function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
@@ -138,7 +155,7 @@ function Movie({ movie }) {
       <h3>{movie.Title}</h3>
       <div>
         <p>
-          <span>🗓</span>
+          <span>🗓️</span>
           <span>{movie.Year}</span>
         </p>
       </div>
