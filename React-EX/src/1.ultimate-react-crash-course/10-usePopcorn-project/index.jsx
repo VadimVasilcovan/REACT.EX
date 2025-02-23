@@ -53,7 +53,7 @@ const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function UsePopcornApp() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("inception");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
@@ -82,7 +82,8 @@ useEffect(
   function(){
     async function fetchMovies(){
       try {setIsLoading(true)
-  const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${tempQuery}`)
+        setError('')
+  const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
 
       if(!res.ok) throw new Error('Something went wrong with fetching movies')
 
@@ -97,10 +98,15 @@ useEffect(
           setIsLoading(false)
         }
         
-    
+    if(query.length < 3){
+      setMovies([])
+      setError('')
+      return
+    }
     }
     fetchMovies()
-  },[])
+
+  },[query])
 
   
   return (
