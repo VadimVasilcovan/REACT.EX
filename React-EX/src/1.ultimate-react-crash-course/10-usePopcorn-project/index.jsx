@@ -48,23 +48,41 @@ const tempWatchedData = [
   },
 ];
 
-const KEY = "98010b39";
+const KEY = "67c3761d";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function UsePopcornApp() {
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const query ='saddsadas'
+  const tempQuery ='interstellar'
+
+  
+/*
+  useEffect(function(){
+    console.log('After initial render')
+  }, [])
+
+  useEffect(function(){
+    console.log('After any render')
+  })
+
+  useEffect(function(){
+    console.log('d')
+  }, [query])
+
+  console.log('during render')
+*/
 
 useEffect(  
   
   function(){
     async function fetchMovies(){
       try {setIsLoading(true)
-  const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+  const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${tempQuery}`)
 
       if(!res.ok) throw new Error('Something went wrong with fetching movies')
 
@@ -89,7 +107,7 @@ useEffect(
     <>
       <Navbar>
         <Logo />
-        <Search />
+        <Search query={query} setQuery={setQuery}/>
         <NumResults movies={movies} />
       </Navbar>
       <Main>
@@ -126,8 +144,8 @@ function ErrorMessage({message}){
 function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
-function Search() {
-  const [query, setQuery] = useState("");
+function Search({query, setQuery}) {
+ 
   return (
     <input
       className="search"
