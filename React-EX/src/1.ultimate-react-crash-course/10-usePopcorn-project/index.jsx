@@ -56,12 +56,11 @@ export default function UsePopcornApp() {
   const [query, setQuery] = useState("inception");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
-  const tempQuery ='interstellar'
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const tempQuery = "interstellar";
 
-  
-/*
+  /*
   useEffect(function(){
     console.log('After initial render')
   }, [])
@@ -77,51 +76,55 @@ export default function UsePopcornApp() {
   console.log('during render')
 */
 
-useEffect(  
-  
-  function(){
-    async function fetchMovies(){
-      try {setIsLoading(true)
-        setError('')
-  const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          setIsLoading(true);
+          setError("");
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          );
 
-      if(!res.ok) throw new Error('Something went wrong with fetching movies')
+          if (!res.ok)
+            throw new Error("Something went wrong with fetching movies");
 
-      const data = await res.json()
-      if (data.Response === 'False') throw new Error('the Movie was not find')
-        setMovies(data.Search)
-        console.log(data)
-     }catch(err){
-          console.error(err.message)
-          setError(err.message)
-        }finally{
-          setIsLoading(false)
+          const data = await res.json();
+          if (data.Response === "False")
+            throw new Error("the Movie was not find");
+          setMovies(data.Search);
+          console.log(data);
+        } catch (err) {
+          console.error(err.message);
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
         }
-        
-    if(query.length < 3){
-      setMovies([])
-      setError('')
-      return
-    }
-    }
-    fetchMovies()
 
-  },[query])
+        if (query.length < 3) {
+          setMovies([]);
+          setError("");
+          return;
+        }
+      }
+      fetchMovies();
+    },
+    [query]
+  );
 
-  
   return (
     <>
       <Navbar>
         <Logo />
-        <Search query={query} setQuery={setQuery}/>
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </Navbar>
       <Main>
         <Box>
-        {/* { isLoading ? <Loader/> : */}
-        {isLoading &&  <Loader/>}
-        {!isLoading && !error && <MovieList movies={movies} />}
-        {error && <ErrorMessage  message={error}/>}
+          {/* { isLoading ? <Loader/> : */}
+          {isLoading && <Loader />}
+          {!isLoading && !error && <MovieList movies={movies} />}
+          {error && <ErrorMessage message={error} />}
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
@@ -132,26 +135,22 @@ useEffect(
   );
 }
 
-
-
-
-
-function Loader({}){
-  return(<h1 className="'Loading...">
-    Loading... 
-  </h1>)
+function Loader({}) {
+  return <h1 className="'Loading...">Loading...</h1>;
 }
 
-function ErrorMessage({message}){
-  return <p className="error">
-    <span>🫷🏿</span>{message}
-  </p>
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+      <span>🫷🏿</span>
+      {message}
+    </p>
+  );
 }
 function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
-function Search({query, setQuery}) {
- 
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
