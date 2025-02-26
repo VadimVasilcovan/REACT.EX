@@ -87,6 +87,11 @@ export default function UsePopcornApp() {
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
   }
+
+
+
+
+
   useEffect(
     function () {
       async function fetchMovies() {
@@ -146,6 +151,7 @@ export default function UsePopcornApp() {
               selectedId={selectedId}
               onCloseMovie={handleCloseMovies}
               onAddWatched={handleAddWatched}
+              watched={watched}
             />
           ) : (
             <>
@@ -230,10 +236,13 @@ function Movie({ movie, handleSelectMovie }) {
   );
 }
 
-function MovieDetail({ selectedId, onCloseMovie, onAddWatched }) {
+function MovieDetail({ selectedId, onCloseMovie, onAddWatched,  watched}) {
   const [movie, setMovies] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUseRating] =useState('')
 
+
+ 
   const {
     Title: title,
     Year: year,
@@ -245,6 +254,7 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched }) {
     Actors: actors,
     Director: director,
     Genre: genre,
+    
   } = movie;
 
   function handleAdd() {
@@ -255,6 +265,7 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched }) {
       poster,
       imdbRating: Number(imdbRating),
       runtime: parseInt(runtime, 10),
+      userRating
     };
     
     onAddWatched(newWatchedMovie);
@@ -302,10 +313,10 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched }) {
           </header>
           <section>
             <div className="rating">
-              <StarRating maxRating={10} size={24} />
-              <button className="btn-add" onClick={handleAdd}>
+              <StarRating maxRating={10} size={24} onSetRating={setUseRating}/>
+             {userRating > 0 && <button className="btn-add" onClick={handleAdd}>
                 + Add to list
-              </button>
+              </button>}
             </div>
             <p>
               <em>{plot}</em>
