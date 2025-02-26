@@ -83,6 +83,10 @@ export default function UsePopcornApp() {
   function handleCloseMovies() {
     setSelectedId(null);
   }
+
+  function handleAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
+  }
   useEffect(
     function () {
       async function fetchMovies() {
@@ -141,6 +145,7 @@ export default function UsePopcornApp() {
             <MovieDetail
               selectedId={selectedId}
               onCloseMovie={handleCloseMovies}
+              onAddWatched={handleAddWatched}
             />
           ) : (
             <>
@@ -225,7 +230,7 @@ function Movie({ movie, handleSelectMovie }) {
   );
 }
 
-function MovieDetail({ selectedId, onCloseMovie }) {
+function MovieDetail({ selectedId, onCloseMovie, onAddWatched }) {
   const [movie, setMovies] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -241,6 +246,20 @@ function MovieDetail({ selectedId, onCloseMovie }) {
     Director: director,
     Genre: genre,
   } = movie;
+
+  function handleAdd() {
+    const newWatchedMovie = {
+      imdbID: selectedId,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: parseInt(runtime, 10),
+    };
+    
+    onAddWatched(newWatchedMovie);
+   onCloseMovie();
+  }
   console.log(title, year);
   useEffect(
     function () {
@@ -284,6 +303,9 @@ function MovieDetail({ selectedId, onCloseMovie }) {
           <section>
             <div className="rating">
               <StarRating maxRating={10} size={24} />
+              <button className="btn-add" onClick={handleAdd}>
+                + Add to list
+              </button>
             </div>
             <p>
               <em>{plot}</em>
@@ -376,8 +398,8 @@ function WatchedMoviesList({ watched }) {
 function WatchedMovies({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.Title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
