@@ -88,10 +88,6 @@ export default function UsePopcornApp() {
     setWatched((watched) => [...watched, movie]);
   }
 
-
-
-
-
   useEffect(
     function () {
       async function fetchMovies() {
@@ -236,13 +232,13 @@ function Movie({ movie, handleSelectMovie }) {
   );
 }
 
-function MovieDetail({ selectedId, onCloseMovie, onAddWatched,  watched}) {
+function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [movie, setMovies] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [userRating, setUseRating] =useState('')
+  const [userRating, setUseRating] = useState("");
 
-
- 
+  const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
+  const watchedUserRating = watched.find(movie=>movie.imdbID === selectedId)?.userRating
   const {
     Title: title,
     Year: year,
@@ -254,7 +250,6 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched,  watched}) {
     Actors: actors,
     Director: director,
     Genre: genre,
-    
   } = movie;
 
   function handleAdd() {
@@ -265,11 +260,11 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched,  watched}) {
       poster,
       imdbRating: Number(imdbRating),
       runtime: parseInt(runtime, 10),
-      userRating
+      userRating,
     };
-    
+
     onAddWatched(newWatchedMovie);
-   onCloseMovie();
+    onCloseMovie();
   }
   console.log(title, year);
   useEffect(
@@ -313,10 +308,17 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched,  watched}) {
           </header>
           <section>
             <div className="rating">
-              <StarRating maxRating={10} size={24} onSetRating={setUseRating}/>
-             {userRating > 0 && <button className="btn-add" onClick={handleAdd}>
-                + Add to list
-              </button>}
+            {!isWatched ?  
+             <>
+              <StarRating maxRating={10} size={24} onSetRating={setUseRating} />
+              {userRating > 0 && (
+                <button className="btn-add" onClick={handleAdd}>
+                  + Add to list
+                </button>
+              )}
+            </> : <p>Ypu rated with {watchedUserRating}⭐ this movie</p>
+              
+              }
             </div>
             <p>
               <em>{plot}</em>
