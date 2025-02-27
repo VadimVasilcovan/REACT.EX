@@ -1,0 +1,35 @@
+.navbar-ex-stile{
+    margin-top: 10rem;
+    border: solid;
+    width: 100rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: center;
+}
+
+
+.main-div-trash-movies{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 60rem;
+
+}
+
+
+
+.Continers-div-trash-movies{
+    width: 40rem;
+    border: solid;
+}
+
+
+.Box-div-trash-movies{
+    width: 100%;
+    min-height: 10rem;
+    border: solid;
+}
