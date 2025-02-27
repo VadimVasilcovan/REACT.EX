@@ -1,5 +1,5 @@
-.navbar-ex-stile{
-    margin-top: 20rem;
+.navbar-ex-stile {
+    margin-top: 10rem; /* Reduced excessive margin */
     border: solid;
     width: 100rem;
     height: 5rem;
@@ -10,51 +10,53 @@
     align-items: center;
 }
 
-
-.main-div-trash-movies{
+.main-div-trash-movies {
     margin-top: 10rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     min-height: 60rem;
-
 }
 
-
-
-.Continers-div-trash-movies{
+.Continers-div-trash-movies {
     width: 40rem;
     border: solid;
-    max-height: 100rem;
+    max-height: auto;
+  
 }
 
-
-.Box-div-trash-movies{
+.Box-div-trash-movies {
     width: 100%;
     min-height: 10rem;
-    max-height: 100rem;
+    max-height: auto;
     border: solid;
+    display: flex; /* Added to make gap work */
+    flex-direction: column;
     gap: 2rem;
+    padding: 1rem; /* Added for spacing */
 }
 
-.div-movie-basic-info{
-    width: 100%;
-    height: 5rem;
+.div-movie-basic-info {
+    height: auto; /* Allows flexibility */
     display: flex;
     flex-direction: row;
-    padding: 5rem;
-
+    align-items: center;
+    padding: 1rem; /* Adjusted from 5rem to prevent layout break */
+    cursor: pointer;
+    border: solid;
 }
 
-.basic-info-img{
+.div-movie-basic-info:hover { /* Fixed hover selector */
+    background-color: brown;
+}
+
+.basic-info-img {
     width: 5rem;
     height: 8rem;
     object-fit: cover;
 }
 
-
-.basic-info-secondary{
-display: flex;
-flex-direction: column;
-
+.basic-info-secondary {
+    display: flex;
+    flex-direction: column;
 }

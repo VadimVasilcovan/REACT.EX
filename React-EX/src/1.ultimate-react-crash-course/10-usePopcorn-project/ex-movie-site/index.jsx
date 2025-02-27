@@ -10,12 +10,17 @@ import { Main } from "./components/Main";
 
 const KEY = "67c3761d";
 export default function MoviesEx01() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [closeBox, setCloseBox] = useState(false);
   const [moviesdata, setMoviesData] = useState([]);
+  const [selectedId, setSelectedId] = useState("");
 
   function handleCloseMovieList() {
     setCloseBox((closeBox) => !closeBox);
+  }
+
+  function handleId(movie) {
+    setSelectedId(movie);
   }
 
   useEffect(() => {
@@ -25,14 +30,15 @@ export default function MoviesEx01() {
           `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
         );
         const movieResult = await movieData.json();
-        setMoviesData(movieResult.Search || [])
+        setMoviesData(movieResult.Search || []);
       } catch {
       } finally {
       }
     }
     GetBasicMovies();
-    console.log(moviesdata)
+    console.log(moviesdata);
   }, [query]);
+
   return (
     <>
       <Navbar>
@@ -42,33 +48,64 @@ export default function MoviesEx01() {
       </Navbar>
       <Main>
         <Continers onCloseMovieList={handleCloseMovieList}>
-          {closeBox || <Box>
-            <ListOfMovies moviesdata={moviesdata}/>
-            
-            </Box>}
+          {closeBox || (
+            <Box>
+              <ListOfMovies moviesdata={moviesdata} handleId={handleId} />
+            </Box>
+          )}
         </Continers>
-        <Continers></Continers>
+        <Continers>
+          <MovieInfo selectedId={selectedId} />
+        </Continers>
       </Main>
     </>
   );
 }
 
-function ListOfMovies({moviesdata}) {
-
-  
-  return (<>
-  { moviesdata.map((movie) => (
-    <div key={movie.imdbID} className="div-movie-basic-info">
-        <div>
-        <img src={movie.Poster} className="basic-info-img"/>
-        </div>
-        <div className="basic-info-secondary">
+function ListOfMovies({ moviesdata, handleId }) {
+  return (
+    <>
+      {moviesdata.map((movie) => (
+        <div
+          key={movie.imdbID}
+          className="div-movie-basic-info"
+          onClick={() => handleId(movie.imdbID)}
+        >
+          <div>
+            <img src={movie.Poster} className="basic-info-img" />
+          </div>
+          <div className="basic-info-secondary">
             <span>{movie.Title}</span>
             <span>{movie.Year}</span>
+          </div>
         </div>
-    </div>
-  ))}
-  </>
-   
+      ))}
+    </>
   );
+}
+
+function MovieInfo({selectedId}) {
+  const [detaliedInfo, setDetaliedInfo] = useState({});
+
+  useEffect(() => {
+    async function handleDetaliedInfo() {
+      try {
+        const detaliedData = await fetch(
+          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+        );
+        const detaliedReult = await detaliedData.json();
+        setDetaliedInfo(detaliedReult || {});
+      } catch {}
+    }
+
+    handleDetaliedInfo();
+    console.log(detaliedInfo)
+  }, [selectedId]);
+
+  return <div>
+    <img src={detaliedInfo.Poster}/>
+    <h1>Title: {detaliedInfo.Title}</h1>
+    <h1>Country: {detaliedInfo.Country}</h1>
+    <h1>Rating: {detaliedInfo.imdbRating} ⭐</h1>
+  </div>;
 }
