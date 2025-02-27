@@ -52,6 +52,17 @@
     border: solid;
 }
 
+
+.div-movie-basic-info-fav{
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    border: solid;   
+}
+
 .div-movie-basic-info:hover {
     background-color: brown;
 }

@@ -24,7 +24,7 @@ export default function MoviesEx01() {
 
   function handleId(movie) {
     setSelectedId(movie);
-    setShowFavorite(true)
+    setShowFavorite(true);
   }
 
   function handleAddToFavorites(newFavoriteItem) {
@@ -33,7 +33,7 @@ export default function MoviesEx01() {
         ? prev
         : [...prev, newFavoriteItem]
     );
-    setShowFavorite(false)
+    setShowFavorite(false);
   }
 
   useEffect(() => {
@@ -75,11 +75,13 @@ export default function MoviesEx01() {
         </Continers>
         <Continers>
           <Box>
-            {showFavorite && (
+            {showFavorite ? (
               <MovieInfo
                 selectedId={selectedId}
                 onAddToFavorites={handleAddToFavorites}
               />
+            ) : (
+              <ListOfFavoritesMovies listOfFavorites={listOfFavorites} />
             )}
           </Box>
         </Continers>
@@ -88,7 +90,7 @@ export default function MoviesEx01() {
   );
 }
 
-function ListOfMovies({ moviesdata, handleId, }) {
+function ListOfMovies({ moviesdata, handleId }) {
   return (
     <>
       {moviesdata.map((movie) => (
@@ -97,6 +99,30 @@ function ListOfMovies({ moviesdata, handleId, }) {
           className="div-movie-basic-info"
           onClick={() => handleId(movie.imdbID)}
         >
+          <div>
+            <img src={movie.Poster} className="basic-info-img" />
+          </div>
+          <div className="basic-info-secondary">
+            <span>
+              <h2>Title</h2>
+              {movie.Title}
+            </span>
+            <span>
+              <h2>Year</h2>
+              {movie.Year}
+            </span>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
+
+function ListOfFavoritesMovies({ listOfFavorites }) {
+  return (
+    <>
+      {listOfFavorites.map((movie) => (
+        <div key={movie.imdbID} className="div-movie-basic-info-fav">
           <div>
             <img src={movie.Poster} className="basic-info-img" />
           </div>
@@ -137,9 +163,11 @@ function MovieInfo({ selectedId, onAddToFavorites }) {
   return (
     <div>
       <img src={detaliedInfo.Poster} />
+      
       <button onClick={() => onAddToFavorites(detaliedInfo)}>
         Add To Favorite
       </button>
+      
       <h1>Title: {detaliedInfo.Title}</h1>
       <h1>Country: {detaliedInfo.Country}</h1>
       <h1>Rating: {detaliedInfo.imdbRating} ⭐</h1>
