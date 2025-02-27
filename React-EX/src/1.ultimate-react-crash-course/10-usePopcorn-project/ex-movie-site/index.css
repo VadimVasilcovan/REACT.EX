@@ -1,5 +1,5 @@
 .navbar-ex-stile{
-    margin-top: 10rem;
+    margin-top: 20rem;
     border: solid;
     width: 100rem;
     height: 5rem;
@@ -25,11 +25,36 @@
 .Continers-div-trash-movies{
     width: 40rem;
     border: solid;
+    max-height: 100rem;
 }
 
 
 .Box-div-trash-movies{
     width: 100%;
     min-height: 10rem;
+    max-height: 100rem;
     border: solid;
+    gap: 2rem;
+}
+
+.div-movie-basic-info{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    padding: 5rem;
+
+}
+
+.basic-info-img{
+    width: 5rem;
+    height: 8rem;
+    object-fit: cover;
+}
+
+
+.basic-info-secondary{
+display: flex;
+flex-direction: column;
+
 }
