@@ -1,17 +1,22 @@
 .navbar-ex-stile {
-    margin-top: 10rem; /* Reduced excessive margin */
+    position: fixed; /* Keeps navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
     border: solid;
-    width: 100rem;
     height: 5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 3rem;
     align-items: center;
+   
+    z-index: 1000; /* Ensures it stays on top */
+    padding: 0 2rem; /* Adds some spacing */
 }
 
 .main-div-trash-movies {
-    margin-top: 10rem;
+    margin-top: 7rem; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,32 +26,33 @@
 .Continers-div-trash-movies {
     width: 40rem;
     border: solid;
-    max-height: auto;
-  
+    max-height: 100vh; 
+    overflow-y: auto; 
 }
 
 .Box-div-trash-movies {
     width: 100%;
     min-height: 10rem;
-    max-height: auto;
+    max-height: 80vh; 
     border: solid;
-    display: flex; /* Added to make gap work */
+    display: flex; 
     flex-direction: column;
     gap: 2rem;
-    padding: 1rem; /* Added for spacing */
+    padding: 1rem;
+    overflow-y: auto; 
 }
 
 .div-movie-basic-info {
-    height: auto; /* Allows flexibility */
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 1rem; /* Adjusted from 5rem to prevent layout break */
+    padding: 1rem;
     cursor: pointer;
     border: solid;
 }
 
-.div-movie-basic-info:hover { /* Fixed hover selector */
+.div-movie-basic-info:hover {
     background-color: brown;
 }
 

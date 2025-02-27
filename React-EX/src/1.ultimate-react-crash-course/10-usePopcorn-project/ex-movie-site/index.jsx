@@ -12,8 +12,11 @@ const KEY = "67c3761d";
 export default function MoviesEx01() {
   const [query, setQuery] = useState("");
   const [closeBox, setCloseBox] = useState(false);
+  const [showFavorite, setShowFavorite] = useState(false);
   const [moviesdata, setMoviesData] = useState([]);
   const [selectedId, setSelectedId] = useState("");
+  const [isloading, setIsloading] = useState(false);
+  const [listOfFavorites, setListOfFavorites] = useState([]);
 
   function handleCloseMovieList() {
     setCloseBox((closeBox) => !closeBox);
@@ -21,11 +24,22 @@ export default function MoviesEx01() {
 
   function handleId(movie) {
     setSelectedId(movie);
+    setShowFavorite(true)
+  }
+
+  function handleAddToFavorites(newFavoriteItem) {
+    setListOfFavorites((prev) =>
+      prev.some((p) => p.imdbID === newFavoriteItem.imdbID)
+        ? prev
+        : [...prev, newFavoriteItem]
+    );
+    setShowFavorite(false)
   }
 
   useEffect(() => {
     async function GetBasicMovies() {
       try {
+        setIsloading(true);
         const movieData = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
         );
@@ -33,6 +47,7 @@ export default function MoviesEx01() {
         setMoviesData(movieResult.Search || []);
       } catch {
       } finally {
+        setIsloading(false);
       }
     }
     GetBasicMovies();
@@ -44,25 +59,36 @@ export default function MoviesEx01() {
       <Navbar>
         <SiteLogo />
         <SearchInput setQuery={setQuery} query={query} />
-        <ResultCount />
+        <ResultCount moviesdata={moviesdata} />
       </Navbar>
       <Main>
         <Continers onCloseMovieList={handleCloseMovieList}>
           {closeBox || (
             <Box>
-              <ListOfMovies moviesdata={moviesdata} handleId={handleId} />
+              {isloading ? (
+                <h1>Loading</h1>
+              ) : (
+                <ListOfMovies moviesdata={moviesdata} handleId={handleId} />
+              )}
             </Box>
           )}
         </Continers>
         <Continers>
-          <MovieInfo selectedId={selectedId} />
+          <Box>
+            {showFavorite && (
+              <MovieInfo
+                selectedId={selectedId}
+                onAddToFavorites={handleAddToFavorites}
+              />
+            )}
+          </Box>
         </Continers>
       </Main>
     </>
   );
 }
 
-function ListOfMovies({ moviesdata, handleId }) {
+function ListOfMovies({ moviesdata, handleId, }) {
   return (
     <>
       {moviesdata.map((movie) => (
@@ -75,8 +101,14 @@ function ListOfMovies({ moviesdata, handleId }) {
             <img src={movie.Poster} className="basic-info-img" />
           </div>
           <div className="basic-info-secondary">
-            <span>{movie.Title}</span>
-            <span>{movie.Year}</span>
+            <span>
+              <h2>Title</h2>
+              {movie.Title}
+            </span>
+            <span>
+              <h2>Year</h2>
+              {movie.Year}
+            </span>
           </div>
         </div>
       ))}
@@ -84,7 +116,7 @@ function ListOfMovies({ moviesdata, handleId }) {
   );
 }
 
-function MovieInfo({selectedId}) {
+function MovieInfo({ selectedId, onAddToFavorites }) {
   const [detaliedInfo, setDetaliedInfo] = useState({});
 
   useEffect(() => {
@@ -99,13 +131,18 @@ function MovieInfo({selectedId}) {
     }
 
     handleDetaliedInfo();
-    console.log(detaliedInfo)
+    console.log(detaliedInfo);
   }, [selectedId]);
 
-  return <div>
-    <img src={detaliedInfo.Poster}/>
-    <h1>Title: {detaliedInfo.Title}</h1>
-    <h1>Country: {detaliedInfo.Country}</h1>
-    <h1>Rating: {detaliedInfo.imdbRating} ⭐</h1>
-  </div>;
+  return (
+    <div>
+      <img src={detaliedInfo.Poster} />
+      <button onClick={() => onAddToFavorites(detaliedInfo)}>
+        Add To Favorite
+      </button>
+      <h1>Title: {detaliedInfo.Title}</h1>
+      <h1>Country: {detaliedInfo.Country}</h1>
+      <h1>Rating: {detaliedInfo.imdbRating} ⭐</h1>
+    </div>
+  );
 }
