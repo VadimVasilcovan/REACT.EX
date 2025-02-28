@@ -54,7 +54,7 @@ const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function UsePopcornApp() {
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -113,8 +113,9 @@ export default function UsePopcornApp() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          console.error(err.message);
+          
           if (err.name !== "AbortError") {
+            console.log(err.message);
             setError(err.message);
           }
         } finally {
@@ -126,6 +127,7 @@ export default function UsePopcornApp() {
           return;
         }
       }
+      handleCloseMovies();
       fetchMovies();
       return function () {
         controller.abort();
@@ -282,6 +284,24 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onAddWatched(newWatchedMovie);
     onCloseMovie();
   }
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+          
+        }
+      }
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
+
   console.log(title, year);
   useEffect(
     function () {
