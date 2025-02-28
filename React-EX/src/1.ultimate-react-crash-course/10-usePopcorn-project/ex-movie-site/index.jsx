@@ -17,7 +17,7 @@ export default function MoviesEx01() {
   const [selectedId, setSelectedId] = useState("");
   const [isloading, setIsloading] = useState(false);
   const [listOfFavorites, setListOfFavorites] = useState([]);
-
+  const [error, setError] = useState([]);
   function handleCloseMovieList() {
     setCloseBox((closeBox) => !closeBox);
   }
@@ -43,9 +43,16 @@ export default function MoviesEx01() {
         const movieData = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
         );
+
+        if (!movieData.ok) throw new Error("something went wrong");
         const movieResult = await movieData.json();
+
+        if (movieResult.Response === "False")
+          throw new Error("movies was not found");
         setMoviesData(movieResult.Search || []);
-      } catch {
+      } catch (err) {
+        console.error(err.message);
+        setError(err.message)
       } finally {
         setIsloading(false);
       }
@@ -83,6 +90,8 @@ export default function MoviesEx01() {
             ) : (
               <ListOfFavoritesMovies listOfFavorites={listOfFavorites} />
             )}
+
+            <ErrorMessage message={error}/>
           </Box>
         </Continers>
       </Main>
@@ -163,14 +172,22 @@ function MovieInfo({ selectedId, onAddToFavorites }) {
   return (
     <div>
       <img src={detaliedInfo.Poster} />
-      
+
       <button onClick={() => onAddToFavorites(detaliedInfo)}>
         Add To Favorite
       </button>
-      
+
       <h1>Title: {detaliedInfo.Title}</h1>
       <h1>Country: {detaliedInfo.Country}</h1>
       <h1>Rating: {detaliedInfo.imdbRating} ⭐</h1>
     </div>
   );
+}
+
+
+
+function ErrorMessage({message}){
+
+
+  return(<span>🤬{message}</span>)
 }

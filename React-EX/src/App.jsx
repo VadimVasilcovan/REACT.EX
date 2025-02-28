@@ -45,7 +45,7 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
- <MoviesEx01/>
+ <UsePopcornApp/>
   
     </>
   );
