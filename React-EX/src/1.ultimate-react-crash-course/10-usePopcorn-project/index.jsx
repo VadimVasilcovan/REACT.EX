@@ -88,36 +88,38 @@ export default function UsePopcornApp() {
     setWatched((watched) => [...watched, movie]);
   }
 
-  function handleDeleteWatched(id){
-    setWatched((pervWatched) => pervWatched.filter((movie) => movie.imdbID !== id))
+  function handleDeleteWatched(id) {
+    setWatched((pervWatched) =>
+      pervWatched.filter((movie) => movie.imdbID !== id)
+    );
   }
 
   useEffect(
     function () {
+      const controller = new AbortController();
       async function fetchMovies() {
         try {
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            { signal: controller.signal }
           );
-
           if (!res.ok)
             throw new Error("Something went wrong with fetching movies");
-
           const data = await res.json();
           if (data.Response === "False")
             throw new Error("the Movie was not find");
           setMovies(data.Search);
-          console.log(data.Search);
-          console.log(data);
+          setError("");
         } catch (err) {
           console.error(err.message);
-          setError(err.message);
+          if (err.name !== "AbortError") {
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
-
         if (query.length < 3) {
           setMovies([]);
           setError("");
@@ -125,6 +127,9 @@ export default function UsePopcornApp() {
         }
       }
       fetchMovies();
+      return function () {
+        controller.abort();
+      };
     },
     [query]
   );
@@ -156,7 +161,10 @@ export default function UsePopcornApp() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedMoviesList watched={watched} onDeleteWatched={handleDeleteWatched} />
+              <WatchedMoviesList
+                watched={watched}
+                onDeleteWatched={handleDeleteWatched}
+              />
             </>
           )}
         </Box>
@@ -244,7 +252,9 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [userRating, setUseRating] = useState("");
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
-  const watchedUserRating = watched.find(movie=>movie.imdbID === selectedId)?.userRating
+  const watchedUserRating = watched.find(
+    (movie) => movie.imdbID === selectedId
+  )?.userRating;
   const {
     Title: title,
     Year: year,
@@ -292,12 +302,12 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
   useEffect(() => {
     console.log("useEffect ran");
-    if(!title) return
+    if (!title) return;
     document.title = `Movie | ${title}`;
-    return function(){
-      document.title = 'usePopcorn'
-    }
-  }, [title])
+    return function () {
+      document.title = "usePopcorn";
+    };
+  }, [title]);
   return (
     <div className="details">
       {isLoading ? (
@@ -323,17 +333,22 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
           </header>
           <section>
             <div className="rating">
-            {!isWatched ?  
-             <>
-              <StarRating maxRating={10} size={24} onSetRating={setUseRating} />
-              {userRating > 0 && (
-                <button className="btn-add" onClick={handleAdd}>
-                  + Add to list
-                </button>
+              {!isWatched ? (
+                <>
+                  <StarRating
+                    maxRating={10}
+                    size={24}
+                    onSetRating={setUseRating}
+                  />
+                  {userRating > 0 && (
+                    <button className="btn-add" onClick={handleAdd}>
+                      + Add to list
+                    </button>
+                  )}
+                </>
+              ) : (
+                <p>Ypu rated with {watchedUserRating}⭐ this movie</p>
               )}
-            </> : <p>Ypu rated with {watchedUserRating}⭐ this movie</p>
-              
-              }
             </div>
             <p>
               <em>{plot}</em>
@@ -413,11 +428,15 @@ function WatchedSummary({ watched }) {
   );
 }
 
-function WatchedMoviesList({ watched, onDeleteWatched}) {
+function WatchedMoviesList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovies movie={movie} key={movie.imdbID} onDeleteWatched={onDeleteWatched}/>
+        <WatchedMovies
+          movie={movie}
+          key={movie.imdbID}
+          onDeleteWatched={onDeleteWatched}
+        />
       ))}
     </ul>
   );
@@ -441,7 +460,12 @@ function WatchedMovies({ movie, onDeleteWatched }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
-        <button className="btn-delete" onClick={() => onDeleteWatched(movie.imdbID)}>x</button>
+        <button
+          className="btn-delete"
+          onClick={() => onDeleteWatched(movie.imdbID)}
+        >
+          x
+        </button>
       </div>
     </li>
   );
