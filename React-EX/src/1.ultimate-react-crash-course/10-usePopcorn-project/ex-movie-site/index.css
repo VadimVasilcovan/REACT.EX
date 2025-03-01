@@ -1,79 +1,78 @@
 .navbar-ex-stile {
-    position: fixed; /* Keeps navbar at the top */
-    top: 0;
-    left: 0;
-    width: 100%;
-    border: solid;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 3rem;
-    align-items: center;
-   
-    z-index: 1000; /* Ensures it stays on top */
-    padding: 0 2rem; /* Adds some spacing */
+  position: fixed; /* Keeps navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: solid;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: center;
+
+  z-index: 1000; /* Ensures it stays on top */
+  padding: 0 2rem; /* Adds some spacing */
 }
 
 .main-div-trash-movies {
-    margin-top: 7rem; 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: 60rem;
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 60rem;
 }
 
 .Continers-div-trash-movies {
-    width: 40rem;
-    border: solid;
-    max-height: 100vh; 
-    overflow-y: auto; 
+  width: 40rem;
+  border: solid;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 .Box-div-trash-movies {
-    width: 100%;
-    min-height: 10rem;
-    max-height: 80vh; 
-    border: solid;
-    display: flex; 
-    flex-direction: column;
-    gap: 2rem;
-    padding: 1rem;
-    overflow-y: auto; 
+  width: 100%;
+  min-height: 10rem;
+  max-height: 80vh;
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  overflow-y: auto;
 }
 
 .div-movie-basic-info {
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 1rem;
-    cursor: pointer;
-    border: solid;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  border: solid;
 }
 
-
-.div-movie-basic-info-fav{
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 1rem;
-    cursor: pointer;
-    border: solid;   
+.div-movie-basic-info-fav {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  border: solid;
 }
 
 .div-movie-basic-info:hover {
-    background-color: brown;
+  background-color: brown;
 }
 
 .basic-info-img {
-    width: 5rem;
-    height: 8rem;
-    object-fit: cover;
+  width: 5rem;
+  height: 8rem;
+  object-fit: cover;
 }
 
 .basic-info-secondary {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

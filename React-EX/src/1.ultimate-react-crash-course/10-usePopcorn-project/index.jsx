@@ -113,7 +113,6 @@ export default function UsePopcornApp() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          
           if (err.name !== "AbortError") {
             console.log(err.message);
             setError(err.message);
@@ -290,7 +289,6 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
       function callback(e) {
         if (e.code === "Escape") {
           onCloseMovie();
-          
         }
       }
       document.addEventListener("keydown", callback);
