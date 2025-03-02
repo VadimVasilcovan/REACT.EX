@@ -7,6 +7,7 @@ import ArrayEX04 from "./1.ultimate-react-crash-course/06-State-Events-and-Forms
 import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-Forms-Interactive-Components/Exercises/Shoping-card-create-update-etc";
 import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 import MoviesEx01 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site";
+import OneMoreFetchEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/text-expander";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
@@ -45,7 +46,7 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
- <UsePopcornApp/>
+ <OneMoreFetchEx/>
   
     </>
   );
