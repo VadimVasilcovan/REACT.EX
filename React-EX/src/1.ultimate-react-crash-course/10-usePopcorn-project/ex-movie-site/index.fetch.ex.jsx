@@ -8,33 +8,42 @@ export default function OneMoreFetchEx() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+
+
+  
   useEffect(() => {
+    const controller = new AbortController();
     async function getData() {
       try {
         setLoading(true);
         const data = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+          { signal: controller.signal }
         );
         if (!data.ok)
           throw new Error("Something went wrong with fetching movies");
         const result = await data.json();
+        if (result.Response === "False") throw new Error("nothing was found");
         setData(result.Search);
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
+      if (query.length < 3) {
+        setData([]);
+        setError("");
+      }
     }
-
     getData();
-    setError('');
-   
-
-    return function(){
-       
-    }
+    return function () {
+      controller.abort();
+    };
   }, [query]);
 
+
+
+  
   return (
     <div>
       <InputSearch query={query} setQuery={setQuery} />

@@ -8,6 +8,7 @@ import MiniShopingApp from "./1.ultimate-react-crash-course/06-State-Events-and-
 import UsePopcornApp from "./1.ultimate-react-crash-course/10-usePopcorn-project";
 import MoviesEx01 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site";
 import OneMoreFetchEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex";
+import FetchEx03 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex.1";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/text-expander";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
@@ -46,7 +47,7 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
- <OneMoreFetchEx/>
+ <FetchEx03/>
   
     </>
   );
