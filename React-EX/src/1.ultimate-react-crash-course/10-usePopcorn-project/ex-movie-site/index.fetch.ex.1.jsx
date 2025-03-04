@@ -16,7 +16,7 @@ export default function FetchEx03 (){
                 if(!data.ok) throw new Error('data can not bee fetched')
                 const result = await data.json();
                 if (result.Response === 'False') throw new Error('movie was not find')
-                setData(result.Search || [])
+                setData(result?.Search || [])
 
             }catch(err){
                 setError(err.message)
@@ -38,6 +38,9 @@ export default function FetchEx03 (){
         {!loading && !error && <ListOfMovies data={data}/>}
         {error && <ErrorContainer error={error}/>}
 
+
+       
+        
     </>)
 }
 
