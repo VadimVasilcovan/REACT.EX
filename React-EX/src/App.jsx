@@ -16,6 +16,7 @@ import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-co
 import ComponentComposition02 from "./1.ultimate-react-crash-course/component-composition-ex/index-01";
 import ComponentExercises03 from "./1.ultimate-react-crash-course/component-composition-ex/index-02";
 import AppCapitol11ex from "./11-How-react-work-behind";
+import CurrenceConverter from "./Curenci_Converter";
 
 const App = () => {
   
@@ -48,7 +49,8 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
- <FetchEx04/>
+ <CurrenceConverter/>
+
   
     </>
   );
