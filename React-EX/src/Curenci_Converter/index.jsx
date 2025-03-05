@@ -49,6 +49,8 @@ export default function CurrencyConverter() {
       <ShowResult
         convertedCurrency={convertedCurrency}
         wishedCurrency={wishedCurrency}
+        yourCurrency={yourCurrency}
+        value={value}
       />
     </>
   );
@@ -76,11 +78,11 @@ function CurrencySelector({ currency, setCurrency }) {
   );
 }
 
-function ShowResult({ convertedCurrency, wishedCurrency }) {
+function ShowResult({ convertedCurrency, wishedCurrency,yourCurrency, value }) {
   return (
     <div>
       <h1>
-        {convertedCurrency} {wishedCurrency}
+        {yourCurrency === wishedCurrency  ? value : convertedCurrency} {wishedCurrency}
       </h1>
     </div>
   );
