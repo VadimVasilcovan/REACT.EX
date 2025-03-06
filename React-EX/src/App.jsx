@@ -13,6 +13,7 @@ import FetchEx04 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-
 import UsePopcornAppV2 from "./1.ultimate-react-crash-course/10-usePopcorn-project/index v2";
 import LocalStorageEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage";
 import MasteringLocalStorage02 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage.02";
+import LocalStorageEx03 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage.03";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/text-expander";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
@@ -56,7 +57,7 @@ const App = () => {
 
 
 
- <MasteringLocalStorage02/>
+ <LocalStorageEx03/>
     </>
   );
 };

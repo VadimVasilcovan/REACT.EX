@@ -12,8 +12,11 @@ export default function MasteringLocalStorage02() {
   });
 
   const handleAdd = () => {
-    setAdddata([...addData, data]);
-    setData("");
+    if (data.length > 0){
+        setAdddata([...addData, data]);
+        setData("");
+    }
+    
   };
 
   const handleAddToNaotherList = (datahuiada) => {
@@ -35,7 +38,7 @@ export default function MasteringLocalStorage02() {
         <button onClick={handleAdd}>Add</button>
         {addData.map((todos, index) => (
           <>
-            <p key={index}>{todos}</p>
+            <h2 key={index}>{todos}</h2>
             <button onClick={() => handleAddToNaotherList(todos)}>
               Add to another List
             </button>
@@ -46,7 +49,7 @@ export default function MasteringLocalStorage02() {
         <h1>Another list </h1>
         {anotherList.map((dataAnotherList, index) => (
           <>
-            <p key={index}>{dataAnotherList}</p>
+            <h2 key={index}>{dataAnotherList}</h2>
           </>
         ))}
       </div>
