@@ -10,6 +10,7 @@ import MoviesEx01 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex
 import OneMoreFetchEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex";
 import FetchEx03 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex.1";
 import FetchEx04 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex.2";
+import UsePopcornAppV2 from "./1.ultimate-react-crash-course/10-usePopcorn-project/index v2";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/text-expander";
 import ComponentcompositionEx from "./1.ultimate-react-crash-course/component-composition-ex";
@@ -49,7 +50,7 @@ const App = () => {
   
   {/*<UsePopcornApp/>*/}
   {/*<StarRating maxRating={10}/>*/}
- <CurrenceConverter/>
+ <UsePopcornAppV2/>
 
   
     </>

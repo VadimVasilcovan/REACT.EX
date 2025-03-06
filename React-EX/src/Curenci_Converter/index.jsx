@@ -78,11 +78,17 @@ function CurrencySelector({ currency, setCurrency }) {
   );
 }
 
-function ShowResult({ convertedCurrency, wishedCurrency,yourCurrency, value }) {
+function ShowResult({
+  convertedCurrency,
+  wishedCurrency,
+  yourCurrency,
+  value,
+}) {
   return (
     <div>
       <h1>
-        {yourCurrency === wishedCurrency  ? value : convertedCurrency} {wishedCurrency}
+        {yourCurrency === wishedCurrency ? value : convertedCurrency}{" "}
+        {wishedCurrency}
       </h1>
     </div>
   );

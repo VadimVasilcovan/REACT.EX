@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import StarRating from "./starRating";
 
-
-
 const KEY = "67c3761d";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -11,12 +9,16 @@ const average = (arr) =>
 export default function UsePopcornAppV2() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  //const [watched, setWatched] = useState([]);
 
- 
+  const [watched, setWatched] = useState(function(){
+    const storedValue = localStorage.getItem('watched')
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
+
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (selectedId === id ? null : id));
   }
@@ -27,6 +29,8 @@ export default function UsePopcornAppV2() {
 
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
+
+    //localStorage.setItem('watched', JSON.stringify([...watched, movie]))
   }
 
   function handleDeleteWatched(id) {
@@ -34,6 +38,10 @@ export default function UsePopcornAppV2() {
       pervWatched.filter((movie) => movie.imdbID !== id)
     );
   }
+
+  useEffect(() =>{
+    localStorage.setItem('watched', JSON.stringify(watched))
+  }, [watched])
 
   useEffect(
     function () {
@@ -221,7 +229,7 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const isTop = imdbRating > 8;
   console.log(isTop);
 
-  const [avgRating, setAvgRating] = useState(0)
+  const [avgRating, setAvgRating] = useState(0);
 
   function handleAdd() {
     const newWatchedMovie = {
@@ -235,10 +243,10 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
     };
 
     onAddWatched(newWatchedMovie);
-   // onCloseMovie();
+    // onCloseMovie();
 
-   //setAvgRating(Number(imdbRating))
-   //setAvgRating((avgRating) => (avgRating + userRating) / 2)
+    //setAvgRating(Number(imdbRating))
+    //setAvgRating((avgRating) => (avgRating + userRating) / 2)
   }
 
   useEffect(
@@ -307,7 +315,7 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
             </div>
           </header>
 
-       {/*<p>{avgRating}</p>*/}
+          {/*<p>{avgRating}</p>*/}
 
           <section>
             <div className="rating">
