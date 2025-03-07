@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./index.css";
 import StarRating from "./starRating";
 
@@ -139,6 +139,13 @@ function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
 function Search({ query, setQuery }) {
+  const inputEl = useRef(null)
+
+  useEffect(()=>{
+    console.log(inputEl.current)
+    inputEl.current.focus()
+  },[])
+
   return (
     <input
       className="search"
@@ -146,6 +153,7 @@ function Search({ query, setQuery }) {
       placeholder="Search movies..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
+      ref={inputEl}
     />
   );
 }

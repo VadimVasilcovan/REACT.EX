@@ -12,11 +12,10 @@ export default function MasteringLocalStorage02() {
   });
 
   const handleAdd = () => {
-    if (data.length > 0){
-        setAdddata([...addData, data]);
-        setData("");
+    if (data.length > 0) {
+      setAdddata([...addData, data]);
+      setData("");
     }
-    
   };
 
   const handleAddToNaotherList = (datahuiada) => {
