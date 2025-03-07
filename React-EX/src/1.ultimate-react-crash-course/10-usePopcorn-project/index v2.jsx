@@ -14,8 +14,8 @@ export default function UsePopcornAppV2() {
   const [selectedId, setSelectedId] = useState(null);
   //const [watched, setWatched] = useState([]);
 
-  const [watched, setWatched] = useState(function(){
-    const storedValue = localStorage.getItem('watched')
+  const [watched, setWatched] = useState(function () {
+    const storedValue = localStorage.getItem("watched");
     return storedValue ? JSON.parse(storedValue) : [];
   });
 
@@ -39,9 +39,9 @@ export default function UsePopcornAppV2() {
     );
   }
 
-  useEffect(() =>{
-    localStorage.setItem('watched', JSON.stringify(watched))
-  }, [watched])
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   useEffect(
     function () {
@@ -138,13 +138,21 @@ function ErrorMessage({ message }) {
 function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
-function Search({ query, setQuery }) {
-  const inputEl = useRef(null)
 
-  useEffect(()=>{
-    console.log(inputEl.current)
-    inputEl.current.focus()
-  },[])
+function Search({ query, setQuery }) {
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    function callback(e) {
+      if (document.activeElement === inputEl.current) return;
+      if (e.code === "Enter") {
+        inputEl.current.focus();
+        setQuery("");
+      }
+    }
+    document.addEventListener("keydown", callback);
+    return () => document.addEventListener("keydown", callback);
+  }, [setQuery]);
 
   return (
     <input
@@ -157,6 +165,7 @@ function Search({ query, setQuery }) {
     />
   );
 }
+
 function Logo() {
   return (
     <div className="logo">
@@ -209,10 +218,17 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUseRating] = useState("");
 
+  const countRef = useRef(0)
+  useEffect(()=>{
+    if(userRating)
+    countRef.current = countRef.current + 1
+  },[userRating])
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
+
+
   const {
     Title: title,
     Year: year,
@@ -248,6 +264,7 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
       imdbRating: Number(imdbRating),
       runtime: parseInt(runtime, 10),
       userRating,
+      countRatingDecisions: countRef.current,
     };
 
     onAddWatched(newWatchedMovie);
