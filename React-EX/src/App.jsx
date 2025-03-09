@@ -15,6 +15,7 @@ import LocalStorageEx04 from "./1.ultimate-react-crash-course/10-usePopcorn-proj
 import LocalStorageEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage";
 import MasteringLocalStorage02 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage.02";
 import LocalStorageEx03 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage.03";
+import LocalStorageEx06 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage.06";
 import LocalStorageEx05 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastring_local_storage.05";
 import StarRating from "./1.ultimate-react-crash-course/10-usePopcorn-project/starRating";
 import TextExpander from "./1.ultimate-react-crash-course/10-usePopcorn-project/text-expander";
@@ -61,7 +62,7 @@ const App = () => {
 
 {/* <UsePopcornAppV2/>*/}
 
-<LocalStorageEx05/>
+<LocalStorageEx06/>
     </>
   );
 };

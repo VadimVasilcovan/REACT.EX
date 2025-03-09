@@ -23,7 +23,7 @@ export default function LocalStorageEx05() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document, removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [data]);
 
