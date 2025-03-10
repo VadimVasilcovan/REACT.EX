@@ -30,6 +30,7 @@ useEffect (()=>{
 },[data])
   
   useEffect(() => {
+    
     localStorage.setItem('dsfadfas', JSON.stringify(task))
   },[task])
 
