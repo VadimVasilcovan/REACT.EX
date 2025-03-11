@@ -2,12 +2,22 @@ import { useEffect, useRef, useState } from "react";
 
 export default function EnableDisableEx() {
   const [mail, setMail] = useState("");
-  const [addMail, setAddMail] = useState(()=>{
-    const locaLstorageFun = localStorage.getItem('addMail');
+  const [addMail, setAddMail] = useState(() => {
+    const locaLstorageFun = localStorage.getItem("addMail");
     return locaLstorageFun ? JSON.parse(locaLstorageFun) : [];
   });
   const [focus, setFocus] = useState(true);
+  const [expandList, setExpandList] = useState(false);
   const focusinput = useRef(null);
+
+  const handleExpandList = () => {
+    return expandList ? addMail : addMail.slice(0, 10);
+  };
+
+  const handleExpand = () => {
+    setExpandList((e) => !e);
+    return;
+  };
 
   const handleAddMail = () => {
     setAddMail([...addMail, mail]);
@@ -16,7 +26,7 @@ export default function EnableDisableEx() {
 
   useEffect(() => {
     const EnterClick = (e) => {
-      if (e.key === "Enter") {
+      if (e.key === "Enter" && !focus) {
         handleAddMail();
       }
     };
@@ -24,7 +34,7 @@ export default function EnableDisableEx() {
     return () => {
       document.removeEventListener("keydown", EnterClick);
     };
-  }, [mail]);
+  }, [focus]);
 
   useEffect(() => {
     focusinput.current.focus();
@@ -34,9 +44,9 @@ export default function EnableDisableEx() {
     setFocus(!mail.includes("@"));
   }, [mail]);
 
-  useEffect(()=>{
-    localStorage.setItem('addMail', JSON.stringify(addMail))
-  },[addMail])
+  useEffect(() => {
+    localStorage.setItem("addMail", JSON.stringify(addMail));
+  }, [addMail]);
 
   return (
     <>
@@ -49,11 +59,12 @@ export default function EnableDisableEx() {
         Submit
       </button>
       <input disabled={true} />
-      {addMail.map((mailsList, index) => (
+      {handleExpandList().map((mail, index) => (
         <div key={index}>
-          <p>{mailsList}</p>
+          <p>{mail}</p>
         </div>
       ))}
+      <button onClick={handleExpand}>show</button>
     </>
   );
 }
