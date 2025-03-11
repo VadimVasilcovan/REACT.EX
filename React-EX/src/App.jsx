@@ -11,6 +11,7 @@ import OneMoreFetchEx from "./1.ultimate-react-crash-course/10-usePopcorn-projec
 import FetchEx03 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex.1";
 import FetchEx04 from "./1.ultimate-react-crash-course/10-usePopcorn-project/ex-movie-site/index.fetch.ex.2";
 import UsePopcornAppV2 from "./1.ultimate-react-crash-course/10-usePopcorn-project/index v2";
+import EnableDisableEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/mail-fomr";
 import LocalStorageEx04 from "./1.ultimate-react-crash-course/10-usePopcorn-project/masteging_local_storage.04";
 import LocalStorageEx09 from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_sotorage.09";
 import LocalStorageEx from "./1.ultimate-react-crash-course/10-usePopcorn-project/mastering_local_storage";
@@ -66,7 +67,7 @@ const App = () => {
 
 {/* <UsePopcornAppV2/>*/}
 
-<LocalStorageEx10/>
+<EnableDisableEx/>
     </>
   );
 };
