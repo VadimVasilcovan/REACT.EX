@@ -67,7 +67,7 @@ const App = () => {
 
 {/* <UsePopcornAppV2/>*/}
 
-<EnableDisableEx/>
+<UsePopcornAppV2/>
     </>
   );
 };
