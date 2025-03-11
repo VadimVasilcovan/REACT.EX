@@ -11,12 +11,16 @@ export default function EnableDisableEx() {
   const focusinput = useRef(null);
 
   const handleExpandList = () => {
-    return expandList ? addMail : addMail.slice(0, 10);
+    return expandList ? addMail : addMail.slice(0, 5);
   };
 
   const handleExpand = () => {
     setExpandList((e) => !e);
     return;
+  };
+
+  const handleDeleteMail = (indexToDelete) => {
+    setAddMail((a) => a.filter((_, index) => index !== indexToDelete));
   };
 
   const handleAddMail = () => {
@@ -61,10 +65,11 @@ export default function EnableDisableEx() {
       <input disabled={true} />
       {handleExpandList().map((mail, index) => (
         <div key={index}>
-          <p>{mail}</p>
+          <p>{mail.length >= 4 ? mail.slice(0, 4) : mail}</p>
+          <button onClick={()=>handleDeleteMail(index)}>delete</button> 
         </div>
       ))}
-      <button onClick={handleExpand}>show</button>
+     { addMail.length > 5 ?  <button onClick={handleExpand}>{expandList ? "hide" : "show"}</button>: <></>}
     </>
   );
 }
