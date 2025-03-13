@@ -6,11 +6,15 @@ export default function Exercise002() {
     const handleLocalStorage = localStorage.getItem("hfss");
     return handleLocalStorage ? JSON.parse(handleLocalStorage) : [];
   });
+  const [warning, setWarning] = useState(false);
   const focusInput = useRef(null);
   const handleAddToDo = () => {
     if (data.length > 3) {
       setToDo([...toDo, data]);
       setData("");
+      setWarning(false)
+    } else {
+      setWarning(true);
     }
   };
 
@@ -33,7 +37,7 @@ export default function Exercise002() {
   }, [data]);
 
   useEffect(() => {
-    localStorage.getItem("hfss", JSON.stringify(toDo));
+    localStorage.setItem("hfss", JSON.stringify(toDo));
   }, [toDo]);
 
   return (
@@ -44,6 +48,7 @@ export default function Exercise002() {
         ref={focusInput}
       />
       <button onClick={handleAddToDo}>Add</button>
+      {warning && <h2 style={{color: 'red'}}> To Do is too short</h2>}
       {toDo.map((toDos, index) => (
         <p key={index}>{toDos}</p>
       ))}
