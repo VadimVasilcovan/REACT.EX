@@ -32,8 +32,6 @@ import AppCapitol11ex from "./11-How-react-work-behind";
 import CurrenceConverter from "./Curenci_Converter";
 
 const App = () => {
-  
-
   {
     /* action = {type: '', payload: '?'}*/
   }
@@ -58,17 +56,13 @@ const App = () => {
 
   return (
     <>
-    
-  
-  {/*<UsePopcornApp/>*/}
-  {/*<StarRating maxRating={10}/>*/}
- {/*<UsePopcornAppV2/>*/}
+      {/*<UsePopcornApp/>*/}
+      {/*<StarRating maxRating={10}/>*/}
+      {/*<UsePopcornAppV2/>*/}
 
+      {/* <UsePopcornAppV2/>*/}
 
-
-{/* <UsePopcornAppV2/>*/}
-
-<Exercise002/>
+      <Exercise002 />
     </>
   );
 };

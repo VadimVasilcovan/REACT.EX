@@ -6,14 +6,13 @@ import { useLocalStorageState } from "./useLocalStorageState";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
-  const KEY = "67c3761d";
+const KEY = "67c3761d";
 export default function UsePopcornAppV2() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const { movies, isLoading, error } = useMovies(query);
   //const [watched, setWatched] = useState([]);
-  const [watched, setWatched] = useLocalStorageState([], 'watched')
- 
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (selectedId === id ? null : id));
@@ -34,8 +33,6 @@ export default function UsePopcornAppV2() {
       pervWatched.filter((movie) => movie.imdbID !== id)
     );
   }
-
- 
 
   return (
     <>

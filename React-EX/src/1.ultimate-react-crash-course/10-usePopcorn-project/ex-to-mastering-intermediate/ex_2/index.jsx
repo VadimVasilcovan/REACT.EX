@@ -12,7 +12,7 @@ export default function Exercise002() {
     if (data.length > 3) {
       setToDo([...toDo, data]);
       setData("");
-      setWarning(false)
+      setWarning(false);
     } else {
       setWarning(true);
     }
@@ -48,7 +48,7 @@ export default function Exercise002() {
         ref={focusInput}
       />
       <button onClick={handleAddToDo}>Add</button>
-      {warning && <h2 style={{color: 'red'}}> To Do is too short</h2>}
+      {warning && <h2 style={{ color: "red" }}> To Do is too short</h2>}
       {toDo.map((toDos, index) => (
         <p key={index}>{toDos}</p>
       ))}
