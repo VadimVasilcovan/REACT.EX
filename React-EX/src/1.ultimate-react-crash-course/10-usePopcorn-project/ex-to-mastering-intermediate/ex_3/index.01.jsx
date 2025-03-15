@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AddCarInfo() {
   const [carYear, setCarYear] = useState("");
   const [manufacturer, setManufacturer] = useState(""); 
   const [model, setModel] = useState("");
-  const [addCar, setAddCar] = useState([]); 
+  const [addCar, setAddCar] = useState(()=>{
+    const keepCarStr = localStorage.getItem('carLocalStr')
+    return keepCarStr ? JSON.parse(keepCarStr) : [];
+  }); 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,7 +23,9 @@ export default function AddCarInfo() {
     setManufacturer(""); 
     setModel("");
   }
-
+useEffect(()=>{
+    localStorage.setItem('carLocalStr', JSON.stringify(addCar))
+})
   return (
     <div>
       <form onSubmit={handleSubmit}>
