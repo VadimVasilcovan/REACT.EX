@@ -9,6 +9,7 @@ export default function AddCarInfo() {
     return keepCarStr ? JSON.parse(keepCarStr) : [];
   }); 
 
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -37,3 +38,27 @@ useEffect(()=>{
     </div>
   );
 }
+
+
+/*  // Refs for the input elements
+ const input1Ref = useRef(null);
+ const input2Ref = useRef(null);
+ const input3Ref = useRef(null);
+
+ // Function to handle arrow key navigation
+ const handleKeyDown = (e) => {
+   if (e.key === "ArrowDown") {
+     if (document.activeElement === input1Ref.current) {
+       input2Ref.current.focus();
+     } else if (document.activeElement === input2Ref.current) {
+       input3Ref.current.focus();
+     }
+   } else if (e.key === "ArrowUp") {
+     if (document.activeElement === input3Ref.current) {
+       input2Ref.current.focus();
+     } else if (document.activeElement === input2Ref.current) {
+       input1Ref.current.focus();
+     }
+   }
+ };
+ */
