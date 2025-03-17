@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AgentData() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [mail, setMail] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(() => {
+    const agentInfo = localStorage.getItem("agentInfo");
+    return agentInfo ? JSON.parse(agentInfo) : [];
+  });
   const [succesMessage, setSuccesMesage] = useState(false);
 
   function handleAddAgentData(e) {
@@ -24,6 +27,21 @@ export default function AgentData() {
       setSuccesMesage(false);
     }
   }
+  useEffect(() => {
+    function addAgentsButtonPress(e) {
+      if (e.key === "Enter") {
+        handleAddAgentData();
+      }
+    }
+
+    document.addEventListener("keyDown", addAgentsButtonPress);
+    return () => {
+      document.removeEventListener("keydown", addAgentsButtonPress);
+    };
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("agentInfo", JSON.stringify(data));
+  }, [data]);
   return (
     <>
       <form value={data} onSubmit={handleAddAgentData}>
@@ -38,7 +56,9 @@ export default function AgentData() {
         <button>Add</button>
       </form>
       {data.map((agent, index) => (
-        <p key={index}>{agent.name} - {agent.age} - {agent.mail}</p>
+        <p key={index}>
+          {agent.name} - {agent.age} - {agent.mail}
+        </p>
       ))}
     </>
   );
