@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useHandleEnter } from "./handleEnter";
 
 export default function AgentData() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [mail, setMail] = useState("");
+  
+  
+  useHandleEnter(handleAddAgentData, age);
+  
   const [data, setData] = useState(() => {
     const agentInfo = localStorage.getItem("agentInfo");
     return agentInfo ? JSON.parse(agentInfo) : [];
   });
+
   const [succesMessage, setSuccesMesage] = useState(false);
 
-  function handleAddAgentData(e) {
-    e.preventDefault();
+  
+  function handleAddAgentData() {
     const newAgent = {
       name,
       age,
@@ -27,34 +33,27 @@ export default function AgentData() {
       setSuccesMesage(false);
     }
   }
-  useEffect(() => {
-    function addAgentsButtonPress(e) {
-      if (e.key === "Enter") {
-        handleAddAgentData();
-      }
-    }
 
-    document.addEventListener("keyDown", addAgentsButtonPress);
-    return () => {
-      document.removeEventListener("keydown", addAgentsButtonPress);
-    };
-  }, []);
+  
   useEffect(() => {
     localStorage.setItem("agentInfo", JSON.stringify(data));
   }, [data]);
+
   return (
     <>
-      <form value={data} onSubmit={handleAddAgentData}>
-        <input onChange={(e) => setName(e.target.value)} value={name} />
+      <form onSubmit={(e) => e.preventDefault()}>
+        <input onChange={(e) => setName(e.target.value)} value={name} placeholder="Name" />
         <input
-          onChange={(e) => setAge(Number(e.target.value))}
+          onChange={(e) => setAge(e.target.value)}
           type="Number"
           value={age}
+          placeholder="Age"
         />
-        <input onChange={(e) => setMail(e.target.value)} value={mail} />
-        {succesMessage ? <h2>good, good!</h2> : ""}
-        <button>Add</button>
+        <input onChange={(e) => setMail(e.target.value)} value={mail} placeholder="Email" />
+        {succesMessage && <h2>Good, good!</h2>}
+        <button type="submit">Add</button>
       </form>
+
       {data.map((agent, index) => (
         <p key={index}>
           {agent.name} - {agent.age} - {agent.mail}
