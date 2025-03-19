@@ -2,7 +2,6 @@ import { useAddNewAgent } from "./useAddNewAgent";
 import { useHandleEnter } from "./handleEnter";
 
 export default function AgentData() {
- 
   const {
     name,
     age,
@@ -12,10 +11,9 @@ export default function AgentData() {
     setName,
     setAge,
     setMail,
-    handleAddAgentData
+    handleAddAgentData,
   } = useAddNewAgent();
 
-  
   useHandleEnter(handleAddAgentData, name);
 
   return (
