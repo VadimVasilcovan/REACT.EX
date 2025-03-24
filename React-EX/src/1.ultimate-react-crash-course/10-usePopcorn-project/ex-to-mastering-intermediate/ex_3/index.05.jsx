@@ -1,20 +1,31 @@
-import { useEffect } from "react";
+import { useState } from "react";
 
-export function useHandleEnter(interactionElemment, trigger) {
-  useEffect(() => {
-    function handleKeyPress(e) {
-      if (e.key === "Enter") {
-        interactionElemment();
-      }
-    }
+export default function Ex05() {
+  const [car, setCar] = useState("");
+  const [mileage, setMileage] = useState("");
+  const [productionYear, setProductionYear] = useState("");
+  const [addNewCar, setAddNewCar] = useState([]);
 
-    document.addEventListener("keydown", handleKeyPress);
+  function handleAddCar(e) {
+    e.preventDefault();
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
+    const NewCar = {
+      car,
+      mileage,
+      productionYear,
     };
-  }, [interactionElemment, trigger]);
+
+    if (car && mileage && productionYear) {
+      setAddNewCar(...addNewCar, NewCar);
+    }
+  }
+
+  return (
+    <form onSubmit={handleAddCar}>
+      <input onChange={(e) => setCar(e.target.value)} />
+      <input onChange={(e) => setMileage(e.target.value)} />
+      <input onChange={(e) => setProductionYear(e.target.value)} />
+      <button></button>
+    </form>
+  );
 }
-
-
-
