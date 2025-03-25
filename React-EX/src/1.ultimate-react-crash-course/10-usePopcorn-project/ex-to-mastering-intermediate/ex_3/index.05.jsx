@@ -17,24 +17,28 @@ export default function Ex05ex() {
 
     if (car && mileage && productionYear) {
       setAddNewCar([...addNewCar, newCar]);
-      setMileage('')
-      setProductionYear('')
-      setCar('')
+      setMileage("");
+      setProductionYear("");
+      setCar("");
     }
   }
 
   return (
     <>
-    <form onSubmit={handleAddCar}>
-      <input value={car} onChange={(e) => setCar(e.target.value)} />
-      <input value={mileage} onChange={(e) => setMileage(e.target.value)} />
-      <input value={productionYear} onChange={(e) => setProductionYear(e.target.value)} />
-      <button>Add Car</button>
-    </form>
-    {addNewCar.map((carsList, index) =>(
-        <h1 key={index}>{carsList.car} {carsList.productionYear}</h1>
-    ))}
-   
+      <form onSubmit={handleAddCar}>
+        <input value={car} onChange={(e) => setCar(e.target.value)} />
+        <input value={mileage} onChange={(e) => setMileage(e.target.value)} />
+        <input
+          value={productionYear}
+          onChange={(e) => setProductionYear(e.target.value)}
+        />
+        <button>Add Car</button>
+      </form>
+      {addNewCar.map((carsList, index) => (
+        <h1 key={index}>
+          {carsList.car} {carsList.productionYear}
+        </h1>
+      ))}
     </>
   );
 }
