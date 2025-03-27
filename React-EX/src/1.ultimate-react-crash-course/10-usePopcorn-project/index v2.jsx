@@ -3,6 +3,7 @@ import "./index.css";
 import StarRating from "./starRating";
 import { useMovies } from "./useMovies";
 import { useLocalStorageState } from "./useLocalStorageState";
+import { useKey } from "./ex-to-mastering-intermediate/useKey";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -90,19 +91,21 @@ function Navbar({ children }) {
 }
 
 function Search({ query, setQuery }) {
+  useKey("Enter", function () {
+    if (document.activeElement === inputEl.current) return;
+    inputEl.current.focus();
+    setQuery("");
+  });
   const inputEl = useRef(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     function callback(e) {
-      if (document.activeElement === inputEl.current) return;
       if (e.code === "Enter") {
-        inputEl.current.focus();
-        setQuery("");
       }
     }
     document.addEventListener("keydown", callback);
     return () => document.removeEventListener("keydown", callback);
-  }, [setQuery]);
+  }, [setQuery]); */
 
   return (
     <input
@@ -221,7 +224,7 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
     //setAvgRating(Number(imdbRating))
     //setAvgRating((avgRating) => (avgRating + userRating) / 2)
   }
-
+  /* 
   useEffect(
     function () {
       function callback(e) {
@@ -237,7 +240,9 @@ function MovieDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
     },
     [onCloseMovie]
   );
+ */
 
+  useKey("Escape", onCloseMovie);
   console.log(title, year);
   useEffect(
     function () {
