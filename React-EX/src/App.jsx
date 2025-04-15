@@ -33,6 +33,7 @@ import ComponentComposition02 from "./1.ultimate-react-crash-course/component-co
 import ComponentExercises03 from "./1.ultimate-react-crash-course/component-composition-ex/index-02";
 import AppCapitol11ex from "./11-How-react-work-behind";
 import CurrenceConverter from "./Curenci_Converter";
+import ReactAppRouter from "./React-Router-Exercise/ReactApp";
 
 const App = () => {
   {
@@ -65,7 +66,8 @@ const App = () => {
 
       {/* <UsePopcornAppV2/>*/}
 
-      <Ex05ex/>
+      {/* <Ex05ex/> */}
+      <ReactAppRouter/>
     </>
   );
 };
