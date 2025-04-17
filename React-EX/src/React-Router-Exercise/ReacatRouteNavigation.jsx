@@ -6,8 +6,8 @@ export default function ReacatRouteNavigation() {
     <nav>
         Navoigation
         <div>
-            <NavLink to='/'/>
-           
+            <NavLink to='/'>MainPage</NavLink>
+           <NavLink to='second-main-page'>SecondMainPage</NavLink>
         </div>
     </nav>
   )
