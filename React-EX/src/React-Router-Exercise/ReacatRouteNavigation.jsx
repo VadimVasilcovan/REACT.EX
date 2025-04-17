@@ -7,8 +7,7 @@ export default function ReacatRouteNavigation() {
         Navoigation
         <div>
             <NavLink to='/'/>
-            <NavLink/>
-            <NavLink/>
+           
         </div>
     </nav>
   )

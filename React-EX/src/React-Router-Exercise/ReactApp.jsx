@@ -1,15 +1,21 @@
-import React from 'react'
-import {BrouseRouters,Routes, Route} from 'react-router-dom'
-import HomePageRouter from './HomePageRouter'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePageRouter from './HomePageRouter';
+import PageElement1 from './pages/PageElement1.jsx'
+import PageElement2 from './pages/PageElement2.jsx'
 
 export default function ReactAppRouter() {
   return (
     <div>
-        <BrouseRouters>
+      <BrowserRouter>
         <Routes>
-            <Route to='/' element={<HomePageRouter/>} />
+          <Route path='/' element={<HomePageRouter />} >
+            <Route path='element1' element={<PageElement1/>}/>
+            <Route path='element2'element={<PageElement2/>}/>
+          </Route>
         </Routes>
-        </BrouseRouters>
+       
+      </BrowserRouter>
     </div>
-  )
+  );
 }
