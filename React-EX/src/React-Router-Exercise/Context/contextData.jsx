@@ -1,42 +1,58 @@
-import React, { useEffect, useReducer } from "react";
+import  { createContext, useEffect, useReducer, useContext } from "react";
 
+// Create context
+const PostData = createContext();
 
-const contextData = Provider
+// Initial state
 const initialState = {
   isLoading: false,
   fetchedData: [],
 };
 
-
-function reducer() {
+// Reducer function
+function reducer(state, action) {
   switch (action.type) {
-    case "fetch/succes":
+    case "fetch/success": // ✅ fixed typo
       return { ...state, fetchedData: action.payload };
     case "loading/start":
       return { ...state, isLoading: true };
     case "loading/finish":
       return { ...state, isLoading: false };
+    default:
+      return state;
   }
 }
 
-export default function contextData() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+// Context provider component
+export default function PostDataProvider({ children }) {
+  const [{ isLoading, fetchedData }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     async function DataFetching() {
       dispatch({ type: "loading/start" });
       try {
-        const data = await fetch("http://localhost:8000/questions");
-        const respons = await data.json();
-        if (!respons.ok) throw new Error("data can't be fetched");
-        dispatch({ type: "fetch/succes", payload: respons });
+        const res = await fetch("http://localhost:8000/questions");
+        const data = await res.json();
+
+        if (!res.ok) throw new Error("Data can't be fetched");
+
+        dispatch({ type: "fetch/success", payload: data }); 
       } catch (err) {
+        console.error("Fetch error:", err.message);
       } finally {
         dispatch({ type: "loading/finish" });
       }
     }
+
     DataFetching();
   }, []);
 
-  return <div>contextData</div>;
+  return (
+    <PostData.Provider value={{ isLoading, fetchedData, dispatch }}>
+      {children}
+    </PostData.Provider>
+  );
 }
+
+
+export const usePostData = () => useContext(PostData);
