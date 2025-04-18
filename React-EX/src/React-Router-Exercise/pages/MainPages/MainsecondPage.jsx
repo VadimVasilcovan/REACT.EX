@@ -2,6 +2,7 @@ import React from "react";
 import ReacatRouteNavigation from "../../ReacatRouteNavigation";
 import { NavLink } from "react-router-dom";
 import { usePostData } from "../../Context/contextData";
+import DetailedInfo from "../../DetailedInfo";
 
 export default function MainsecondPage() {
   const { fetchedData } = usePostData();
@@ -17,6 +18,7 @@ export default function MainsecondPage() {
           </NavLink>
         </div>
       ))}
+      <DetailedInfo/>
     </div>
   );
 }

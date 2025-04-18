@@ -12,12 +12,16 @@ export default function ReactAppRouter() {
       <BrowserRouter>
         <PostDataProvider>
           <Routes>
+
             <Route path="/" element={<HomePageRouter />}>
+              <Route index element={<PageElement1 />} />
               <Route path="element1" element={<PageElement1 />} />
               <Route path="element2" element={<PageElement2 />} />
             </Route>
+
             <Route path="second-main-page" element={<MainsecondPage />} />
-            <Route path="secoond-main-page/id" element={<MainsecondPage />} />
+            <Route path="second-main-page/:id" element={<MainsecondPage />} />
+            
           </Routes>
         </PostDataProvider>
       </BrowserRouter>
