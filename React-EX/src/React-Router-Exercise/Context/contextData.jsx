@@ -12,7 +12,7 @@ const initialState = {
 // Reducer function
 function reducer(state, action) {
   switch (action.type) {
-    case "fetch/success": // ✅ fixed typo
+    case "fetch/success": 
       return { ...state, fetchedData: action.payload };
     case "loading/start":
       return { ...state, isLoading: true };
