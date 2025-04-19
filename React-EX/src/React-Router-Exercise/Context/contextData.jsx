@@ -7,6 +7,9 @@ const PostData = createContext();
 const initialState = {
   isLoading: false,
   fetchedData: [],
+  currentQuestion: {},
+  yourAnswer: '',
+  correctAnswer: ''
 };
 
 // Reducer function
@@ -18,6 +21,11 @@ function reducer(state, action) {
       return { ...state, isLoading: true };
     case "loading/finish":
       return { ...state, isLoading: false };
+      case "yourAnswer/select":
+        case 'correctAnswer':
+          return ;
+          case 'currentQuestion':
+          return{...state, currentQuestion: action.payload}
     default:
       return state;
   }
@@ -39,7 +47,7 @@ export default function PostDataProvider({ children }) {
         dispatch({ type: "fetch/success", payload: data }); 
       } catch (err) {
         console.error("Fetch error:", err.message);
-      } finally {
+      }  finally {
         dispatch({ type: "loading/finish" });
       }
     }
