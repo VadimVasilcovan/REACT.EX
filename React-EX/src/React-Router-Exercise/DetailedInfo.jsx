@@ -1,37 +1,45 @@
-import {useEffect} from 'react'
-import { useParams } from 'react-router-dom'
-import { usePostData } from './Context/contextData'
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { usePostData } from "./Context/contextData";
 
 export default function DetailedInfo() {
-    const { fetchedData, dispatch } = usePostData();
-    const { id } = useParams();
+  const { fetchedData, dispatch } = usePostData();
+  const { id } = useParams();
 
+  const post = fetchedData.find((item) => item.id.toString() === id);
+
+  useEffect(() => {
+    if (!post) return;
   
-
-    const post = fetchedData.find(item => item.id.toString() === id);
-
-    useEffect(() => {
-        dispatch({
-            type: 'currentQuestion',
-            payload: post 
-        });
-    }, [post, dispatch]);
-
-
-    if (!post || !post.options) return null;
-
-
+    dispatch({
+      type: "currentQuestion",
+      payload: post,
+    });
   
-    console.log(post.options)
+    dispatch({
+      type: "correctAnswer",
+      payload: post.correctOption,
+    });
+  }, [post, dispatch]);
 
-    return (
-        <div key={id}>
-            {post?.question}
-            <p>Points{post?.points}</p>
-            {post.options.map((option, index) => (
-    <button  key={index} onClick={()=>dispatch({type: 'yourAnswer/select', payload: index})}>{option}</button>
-))}
-   
-        </div>
-    )
+  if (!post || !post.options) return null;
+
+  console.log(post.options);
+
+  return (
+    <div key={id}>
+      {post?.question}
+      <p>Points{post?.points}</p>
+      {post.options.map((option, index) => (
+        <button
+          key={index}
+          onClick={() =>
+            dispatch({ type: "yourAnswer/select", payload: index })
+          }
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  );
 }

@@ -7,9 +7,9 @@ const PostData = createContext();
 const initialState = {
   isLoading: false,
   fetchedData: [],
-  currentQuestion: {},
-  yourAnswer: '',
-  correctAnswer: ''
+  currentQuestion: null,
+  yourAnswer: null,
+  correctAnswer:null
 };
 
 // Reducer function
@@ -22,10 +22,12 @@ function reducer(state, action) {
     case "loading/finish":
       return { ...state, isLoading: false };
       case "yourAnswer/select":
+        return{...state, yourAnswer: action.payload}
         case 'correctAnswer':
-          return ;
+          return{...state, correctAnswer: action.payload}
           case 'currentQuestion':
-          return{...state, currentQuestion: action.payload}
+          return{...state, currentQuestion: action.payload};
+
     default:
       return state;
   }
